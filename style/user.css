@@ -1,0 +1,137 @@
+.user-container {
+  min-height: 100vh;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+}
+.user-header {
+  width: 90%;
+  height: 12vh;
+  margin-top: 13vh;
+  background-color: rgba(12, 127, 241, 0.8);
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.user-header h1 {
+  margin: 0 1rem;
+  color: white;
+}
+.user-details {
+  width: 90%;
+  height: 40vh;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.user-details_content {
+  width: 90%;
+  height: 95%;
+  background-color: rgba(30, 144, 255, 0.8);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.user-photo {
+  width: 28%;
+  height: 100%;
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.user-photo img {
+  width: 85%;
+  height: 85%;
+  object-fit: contain;
+}
+.photo-btn {
+  height: 10%;
+  margin: 1% 0;
+}
+.overlay-img:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.user-info {
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 68%;
+  height: 95%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.user-info_content {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.user-info_content .list-item {
+  width: 90%;
+  height: 4vh;
+  margin: 5px auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.user-info_content .list-item label {
+  background-color: #ccc;
+  height: 70%;
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5%;
+  margin-right: 3%;
+  font-size: 12px;
+  letter-spacing: 1%;
+}
+.user-info_content .list-item span {
+  border-bottom: 1px solid #000;
+  width: 80%;
+  letter-spacing: 2%;
+}
+.button-group {
+  align-self: flex-end;
+  margin-right: 2%;
+}
+.button-group button {
+  background-color: dodgerblue;
+  color: white;
+}
+
+.user-appointment_table {
+  width: 90%;
+  height: 100%;
+  margin: 2rem 0;
+}
+.table {
+  text-align: center;
+  font-size: 14px;
+}
+.fa-eye,
+.fa-ban {
+  font-size: 18px;
+  margin: 0 5%;
+  cursor: pointer;
+}
+.fa-eye {
+  color: green;
+}
+.fa-eye:hover {
+  color: #037003;
+}
+.fa-ban {
+  color: red;
+}
+.fa-ban:hover {
+  color: rgb(233, 7, 7);
+}

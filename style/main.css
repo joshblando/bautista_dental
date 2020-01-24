@@ -1,0 +1,87 @@
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.landing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.background-image {
+  background-image: url("https://sa1s3optim.patientpop.com/assets/production/practices/1a1b5cec0dbf9085272a5dd635b8b00a9b5783be/images/1893381.jpg");
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.landing-overlay {
+  width: 50%;
+  height: 100%;
+  background-color: rgba(70, 69, 69, 0.3);
+  position: absolute;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  letter-spacing: 3px;
+}
+.landing-overlay_header {
+  color: white;
+  font-size: 38px;
+}
+.landing-overlay p {
+  width: 70%;
+  color: rgb(250, 250, 250);
+  font-size: 18px;
+  text-align: center;
+}
+
+.section-one {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 2rem;
+}
+
+.section-one_content {
+  height: 50%;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.section-one_content .details {
+  width: 50%;
+  height: 50%;
+  text-align: center;
+
+  margin: 0 auto;
+}
+
+.section-one_content .details .card-content {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+.section-one_content .details .card-content .card-header {
+  font-size: 24px;
+  font-weight: 500;
+}
+.section-one_content .details .card-content .card-description p {
+  font-size: 14px;
+}

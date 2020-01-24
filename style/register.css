@@ -1,0 +1,78 @@
+.section-login {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.login-background {
+  height: 100%;
+  width: 100%;
+  background-image: url("https://sa1s3optim.patientpop.com/assets/production/practices/1a1b5cec0dbf9085272a5dd635b8b00a9b5783be/images/1893381.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.login-container {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(70, 69, 69, 0.3);
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  letter-spacing: 3px;
+  margin: 0 auto;
+}
+.login-container_form {
+  width: 40%;
+  height: 70%;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 5px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
+    0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
+    0 16px 16px rgba(0, 0, 0, 0.12);
+}
+.login-container_form form {
+  width: 90%;
+  height: 90%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+.form-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 90%;
+  margin: 0 auto;
+}
+.form-input label {
+  width: 90%;
+  align-self: flex-start;
+  margin: 3px;
+}
+.form-input input {
+  height: 40px;
+  width: 90%;
+  margin: 3px;
+}
+.form-button {
+  background-color: dodgerblue;
+  color: white;
+}
+.form-group {
+  width: 85%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+}

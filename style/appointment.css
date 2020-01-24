@@ -1,0 +1,180 @@
+.section-appointment {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+.appointment-background {
+  width: 100%;
+  height: 100%;
+  background-image: url("https://images.pexels.com/photos/908602/pexels-photo-908602.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.appointment-content {
+  position: absolute;
+  width: 30%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  right: 0;
+  top: 0;
+}
+.appointment-container {
+  height: 80%;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  padding-top: 10rem;
+}
+.appointment-container h1 {
+  color: white;
+}
+.form-select {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.form-select select {
+  height: 30px;
+  width: 80%;
+  margin: 5px;
+  font-size: 17px;
+  border: 0;
+  outline: 0;
+}
+.appointment-datetime {
+  opacity: 0;
+  pointer-events: none;
+  background-color: none;
+  text-align: center;
+  padding: 5px;
+}
+.appointment-datetime h4 {
+  text-transform: capitalize;
+  background-color: white;
+  padding: 5px;
+  margin: 5px;
+  font-size: 12px;
+}
+#datepicker {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.time-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: all 0.7s ease;
+  margin-top: 20px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.times {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
+}
+.timeSlot {
+  /* border: 1px solid white; */
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.timeSlot:active {
+  background-color: white;
+  color: dodgerblue;
+}
+.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.appoint-modal_body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.appoint-modal_body form {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+.appoint-modal_body .form-input {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.appoint-modal_body .form-input span {
+  width: 20%;
+  background: #ccc;
+  font-size: 12px;
+  text-align: center;
+  padding: 1%;
+  border-radius: 3%;
+}
+
+.appoint-modal_body .form-input input {
+  width: 80%;
+  height: 50px;
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid dodgerblue;
+  cursor: default;
+  font-size: 18px;
+  padding: 0 5px;
+}
+.appoint-modal_body .text-area {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 5% 0;
+}
+.appoint-modal_body .text-area textarea {
+  margin: 5px 0;
+  resize: none;
+  width: 100%;
+}
+td a {
+  /* background: #99dd73 url(blue.png) 50% 50% repeat-x !important; */
+  background-color: rgba(190, 62, 62, 0.8) !important;
+  color: white !important;
+}
+.ui-datepicker-current-day a {
+  background: rgba(103, 240, 228, 0.7) !important;
+  color: white !important;
+}
+
+td.highlight {
+  border: none !important;
+  padding: 1px 0 1px 1px !important;
+  background: none !important;
+  overflow: hidden;
+}
+td.highlight a {
+  background: none !important;
+  background: none !important;
+  border: 1px #88a276 solid !important;
+  color: black !important;
+}

@@ -49,8 +49,9 @@ $(document).ready(function() {
 
         for (i = 0; i < result.length; i++) {
           const dates = result[i].date;
-          dateCheck.push(moment(dates).format("M/D/YYYY"));
+          // dateCheck.push(moment(dates).format("M/D/YYYY"));
         }
+        console.log(dateCheck);
         $("#datepicker").datepicker("destroy");
         $("#datepicker").datepicker({
           minDate: 0,
@@ -70,22 +71,29 @@ $(document).ready(function() {
               },
               dataType: "JSON",
               success: response => {
+                console.log(response.length);
                 $("#times").empty();
                 if (response.length === 0) {
                   $("#times").append(
                     "<li style='background: white; text-align: center; color: dodgerblue; padding: 5px; width: 100%; height:30px'>No time slot available</li>"
                   );
                 } else {
-                  for (i = 0; i < response.length; i++) {
-                    const timeLength = response[i].time;
+                  // for (i = 0; i < response; i++) {
+                  //   const timeLength = response[i];
+                  //
+                  //   $("#times").empty();
+                  //   $.each(timeLength, function(index, value) {
+                  //     const timeSlotList = `<li class="timeSlot" style="border: 1px solid white; background:white; color: dodgerblue;padding: 5px;margin: 5px;cursor: pointer;font-size: 12px;" id="${index}">${value}</li> `;
+                  //
+                  //     $("#times").append(timeSlotList);
+                  //   });
+                  // }
 
-                    $("#times").empty();
-                    $.each(timeLength, function(index, value) {
-                      const timeSlotList = `<li class="timeSlot" style="border: 1px solid white; background:white; color: dodgerblue;padding: 5px;margin: 5px;cursor: pointer;font-size: 12px;" id="${index}">${value}</li> `;
+                  $.each(response, function(index, value) {
+                    const timeSlotList = `<li class="timeSlot" style="border: 1px solid white; background:white; color: dodgerblue;padding: 5px;margin: 5px;cursor: pointer;font-size: 12px;" id="${index}">${value}</li> `;
 
-                      $("#times").append(timeSlotList);
-                    });
-                  }
+                    $("#times").append(timeSlotList);
+                  });
                 }
               }
             });

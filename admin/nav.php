@@ -1,118 +1,204 @@
-<link rel="stylesheet" href="./style/nav.css">
-<div class="topnav">
-  <div class="burger">
-    <div class="line"></div>
-    <div class="line"></div>
-    <div class="line"></div>
-  </div>
-  <div class="topnav-content">
-    <div class="header-icons">
-      <span class="icon-container bell" id="bell"><i class="fas fa-bell"></i>
-        <div id="bell-count">
-          <span class="bounce bell-count_number">0</span>
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
+if (empty($_SESSION['adminId'])) {
+  echo "<script>window.location.replace('./login.php')</script>";
+}
+require "../config/control.php"
+?>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Bautisa Dental Center</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="style/bootstrap.min.css">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="style/style5.css">
+
+    <!-- Font Awesome JS -->
+    <script src="js/solid.js"></script>
+    <script src="js/fontawesome.js"></script>
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <style type="text/css">
+        #sidebar ul li a {
+            padding: 16px !important;
+            font-size: 15px !important;
+        }
+        body{
+            font-size: 14px;
+        }
+        .navbar{
+            padding: 10px !important;
+        }
+        .fc-event{
+            border-radius: 30px !important;
+            color: #fff !important;
+            padding:5px !important;
+        }
+        .nav-item{
+            padding: 0px 10px !important;
+        }
+    </style>
+
+</head>
+
+<body>
+
+  
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <span class="badge badge-primary float-right">PENDING</span>
+          <div class="row">
+            <div class="col-lg-12">
+
+              <img class="img rounded img-fluid" src="https://cdn.pixabay.com/photo/2016/11/28/12/22/dentist-1864921_960_720.jpg">
+            </div>
+          </div>
+          <br>
+
+          <table class="table table-striped">
+            <tbody>
+              <tr>
+                <td>Dentist : <span  id="eventTitle"></span></td>
+              </tr>
+              <tr>
+                <td>Service : <span  id="eventInfo"></span></td>
+              </tr>
+              <tr>
+                <td>Schedule : <span  id="eventDate"></span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-      </span>
-      <span class="icon-container envelope" id="envelope"><i class="fas fa-envelope"></i>
-        <div id="envelope-count">
-          <span class="bounce envelope-count_number">0</span>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Approve</button>
         </div>
-      </span>
-
-    </div>
-    <div class="logout-container">
-      <a href="./controller/logout.php?logout=<?php echo $_SESSION['id'] ?>"><span class="logout-content"><i class="fas fa-sign-out-alt logout"></i></span></a>
+      </div>
     </div>
   </div>
-</div>
-<div class="sidenav dodgerBlue-bg">
-  <div class="close-nav">&times</div>
-  <div class="logo dodgerBlue-bg">
-    <?php
-    $adminId = $_SESSION['adminId'];
-    $getAdmin = $connect->prepare("SELECT * FROM admin WHERE adminId=:adminId");
-    $getAdmin->execute(["adminId" => $adminId]);
-    $admin = $getAdmin->fetch(PDO::FETCH_ASSOC);
-    $photo = $admin['photo'];
-    $name = $admin['firstName'] . " " . $admin['lastName'];
-    ?>
-    <div class="avatar-container_img">
-      <img src=<?php echo $photo ? "'" . $photo . "'" : 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt=""' ?> />
-    </div>
-    <div class="avatar-details">
 
-      <span><?php echo $name ? $name : "John Doe" ?></span>
-    </div>
-  </div>
-  <div id="accord" class="side-nav-content">
-    <div class="sidenav-list"><a href="index.php">Dashboard</a></div>
+    <?php 
 
-    <div class="sidenav-list"><a href="appointment.php">Appointment</a></div>
-    <div class="sidenav-list"><a href="message.php">Messages</a></div>
-    <div class="sidenav-list accord-toggle">
-      Accounts
-    </div>
-    <div class="accord-content">
-      <ul class="accord-list">
-        <a href="./users.php">
-          <li class="accord-list_item">Users</li>
-        </a>
-        <a href="admin.php">
-          <li class="accord-list_item">Admins</li>
-        </a>
+        $adminId = $_SESSION['adminId'];
+        $getAdmin = $connect->prepare("SELECT * FROM admin WHERE adminId=:adminId");
+        $getAdmin->execute(["adminId" => $adminId]);
+        $admin = $getAdmin->fetch(PDO::FETCH_ASSOC);
+        $photo = $admin['photo'];
+        $name = $admin['firstName'] . " " . $admin['lastName'];
+     ?>
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+               <h3><?php echo $name ? $name : "John Doe" ?></h3>
+            </div>
 
-      </ul>
-    </div>
+            <ul class="list-unstyled components">
+               
+                <li>
+                    <a href="index.php">Dashboard</a>
+                </li>
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Schedules</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="appointment.php">Appointments</a>
+                        </li>
+                        <li>
+                            <a href="calendar.php">Calendar</a>
+                        </li>
+                    </ul>
+                </li>
+                  <li>
+                    <a href="message.php">Messages  <span class="float-right badge badge-danger">2</span></a>
+                </li>
+                <li>
+                    <!-- <a href="#">Accounts</a> -->
+                    <a href="#pageAccount" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Accounts</a>
+                    <ul class="collapse list-unstyled" id="pageAccount">
+                        <li>
+                            <a href="./users.php">Users</a>
+                        </li>
+                        <li>
+                            <a href="admin.php">Admins</a>
+                        </li>
+                    </ul>
+                </li>
 
-    <div class="sidenav-list accord-toggle">
-      Content Management
-    </div>
-    <div class="accord-content">
-      <ul class="accord-list">
-        <a href="#">
-          <li class="accord-list_item">Home</li>
-        </a>
-        <a href="#">
-          <li class="accord-list_item">About</li>
-        </a>
-        <a href="#">
-          <li class="accord-list_item">Gallery</li>
-        </a>
-        <a href="#">
-          <li class="accord-list_item">Contact Us</li>
-        </a>
-      </ul>
-    </div>
-    <div class="sidenav-list accord-toggle">
-      File Maintenance
-    </div>
-    <div class="accord-content">
-      <ul class="accord-list">
-        <a href="employees.php">
-          <li class="accord-list_item">Employees</li>
-        </a>
-        <a href="services.php">
-          <li class="accord-list_item">Services</li>
-        </a>
-      </ul>
-    </div>
-    <div class="sidenav-list">Reports</div>
-  </div>
-</div>
+                <li>
+                    <!-- <a href="#">Accounts</a> -->
+                    <a href="#pageContent" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Content Management</a>
+                    <ul class="collapse list-unstyled" id="pageContent">
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">About</a>
+                        </li>
+                        <li>
+                            <a href="#">Gallery</a>
+                        </li>
+                        <li>
+                            <a href="#">Contact Us</a>
+                        </li>
+                    </ul>
+                </li>
 
-<script src="./js/app.js"></script>
-<script src="https://kit.fontawesome.com/0c5646b481.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-  $(document).ready(function() {
-    $("#accord")
-      .find(".accord-toggle")
-      .click(function() {
-        $(this)
-          .next()
-          .slideToggle("fast");
-        $(".accord-content")
-          .not($(this).next())
-          .slideUp("slow");
-      });
-  });
-</script>
+                <li>
+                    <!-- <a href="#">Accounts</a> -->
+                    <a href="#pageFile" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">File Maintenance</a>
+                    <ul class="collapse list-unstyled" id="pageFile">
+                        <li>
+                            <a href="employees.php">Employees</a>
+                        </li>
+                        <li>
+                            <a href="services.php">Services</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#">Reports</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="navbar-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#"><i class="fas fa-bell"></i></a>
+                            </li>
+                            <li class="nav-item">
+                               <a class="nav-link" href="./controller/logout.php?logout=<?php echo $_SESSION['id'] ?>"><span class="logout-content"><i class="fas fa-sign-out-alt logout"></i></span></a>
+                            </li>
+                          
+                        </ul>
+                    </div>
+                </div>
+            </nav>

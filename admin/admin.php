@@ -1,77 +1,45 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-if (empty($_SESSION['adminId'])) {
-    echo "<script>window.location.replace('./login.php')</script>";
-}
-require "../config/control.php"
+include 'nav.php';
 ?>
+        
+    <button class="btn btn-primary float-right" id="addAdmin"><i class="fas fa-plus"></i>&nbsp;Add new admin</button><br><br>
+    <table class="display dt-responsive nowrap table table-striped" id="table_id">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            require_once "../config/control.php";
 
-<!DOCTYPE html>
-<html lang="en">
+            $getAdmins = $connect->prepare("SELECT * from admin");
+            $getAdmins->execute();
+            $admins = $getAdmins->fetchAll();
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/zf-6.4.3/dt-1.10.20/r-2.2.3/rg-1.1.1/sc-2.0.1/datatables.min.css" />
-    <link rel="stylesheet" href="./style/general.css">
-    <link rel="stylesheet" href="./style/main.css">
-    <link rel="stylesheet" href="./style/admin.css">
-    <title>Document</title>
-</head>
+            foreach ($admins as $admin) {
+                $employeeId = $admin['employeeId'];
+                $photo = $admin['photo'];
+                $name = $admin['firstName'] . " " . $admin['lastName'];
 
-<body>
-    <div class="main-container">
-        <?php
-        include 'nav.php'
-        ?>
-        <main class="main">
-            <div class="main-content">
-                <div class="table-container">
-                    <button class="button btn-add dodgerBlue-bg" id="addAdmin"><i class="fas fa-plus"></i>&nbsp;Add new admin</button>
-                    <table class="display dt-responsive nowrap table table-striped table-bordered" id="table_id">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Image</th>
-                                <th>Name</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            require_once "../config/control.php";
-
-                            $getAdmins = $connect->prepare("SELECT * from admin");
-                            $getAdmins->execute();
-                            $admins = $getAdmins->fetchAll();
-
-                            foreach ($admins as $admin) {
-                                $employeeId = $admin['employeeId'];
-                                $photo = $admin['photo'];
-                                $name = $admin['firstName'] . " " . $admin['lastName'];
-
-                            ?>
-                                <tr>
-                                    <td><?php echo $employeeId ?></td>
-                                    <td><?php echo $employeeId ?></td>
-                                    <td><?php echo $name ?></td>
-                                    <td>
-                                        <span><i class="fas fa-eye"></i></span>
-                                    </td>
-                                </tr>
-                            <?php
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </main>
-    </div>
-
+            ?>
+                <tr>
+                    <td><?php echo $employeeId ?></td>
+                    <td><?php echo $employeeId ?></td>
+                    <td><?php echo $name ?></td>
+                    <td>
+                        <span><i class="fas fa-eye"></i></span>
+                    </td>
+                </tr>
+            <?php
+            }
+            ?>
+        </tbody>
+    </table>
+            
     <!-- The Modal -->
     <div id="addAdminModal" class="modal">
 
@@ -147,6 +115,4 @@ require "../config/control.php"
     </script>
 
 
-</body>
-
-</html>
+<?php include 'footer.php'; ?>

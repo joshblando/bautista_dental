@@ -1,79 +1,48 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-if (empty($_SESSION['adminId'])) {
-    echo "<script>window.location.replace('./login.php')</script>";
-}
-require "../config/control.php"
+include 'nav.php'
 ?>
-<!DOCTYPE html>
-<html lang="en">
+       
+    <button class="btn btn-primary float-right" id="addCategory"><i class="fas fa-plus"></i>&nbsp;Add new category</button>
+    <br><br>
+    <table class="display dt-responsive nowrap table table-striped" id="table_id">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            require_once "../config/control.php";
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/zf-6.4.3/dt-1.10.20/r-2.2.3/rg-1.1.1/sc-2.0.1/datatables.min.css" />
-    <link rel="stylesheet" href="./style/general.css">
-    <link rel="stylesheet" href="./style/main.css">
-    <link rel="stylesheet" href="./style/admin.css">
-    <title>Document</title>
-</head>
+            $getCategories = $connect->prepare("SELECT * from category");
+            $getCategories->execute();
+            $categories = $getCategories->fetchAll();
 
-<body>
-    <div class="main-container">
-        <?php
-        include 'nav.php'
-        ?>
-        <main class="main">
-            <div class="main-content">
-                <div class="table-container">
-                    <button class="button btn-add dodgerBlue-bg" id="addCategory"><i class="fas fa-plus"></i>&nbsp;Add new category</button>
-                    <table class="display dt-responsive nowrap table table-striped table-bordered" id="table_id">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Image</th>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            require_once "../config/control.php";
+            foreach ($categories as $category) {
+                $categoryId = $category['categoryId'];
+                $photo = $category['photo'];
+                $name = $category['name'];
+                $description = $category['description'];
 
-                            $getCategories = $connect->prepare("SELECT * from category");
-                            $getCategories->execute();
-                            $categories = $getCategories->fetchAll();
-
-                            foreach ($categories as $category) {
-                                $categoryId = $category['categoryId'];
-                                $photo = $category['photo'];
-                                $name = $category['name'];
-                                $description = $category['description'];
-
-                            ?>
-                                <tr>
-                                    <td><?php echo $categoryId ?></td>
-                                    <td><?php echo $photo ?></td>
-                                    <td><?php echo $name ?></td>
-                                    <td><?php echo $description ?></td>
-                                    <td>
-                                        <a href="./service.php?categoryId=<?php echo $categoryId ?>"><span class="icon"><i class="fas fa-eye view"></i></span></a>
-                                    </td>
-                                </tr>
-                            <?php
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </main>
-    </div>
-
+            ?>
+                <tr>
+                    <td><?php echo $categoryId ?></td>
+                    <td><?php echo $photo ?></td>
+                    <td><?php echo $name ?></td>
+                    <td><?php echo $description ?></td>
+                    <td>
+                        <a href="./service.php?categoryId=<?php echo $categoryId ?>"><span class="icon"><i class="fas fa-eye view"></i></span></a>
+                    </td>
+                </tr>
+            <?php
+            }
+            ?>
+        </tbody>
+    </table>
     <!-- The Modal -->
     <div id="addCategoryModal" class="modal">
 
@@ -141,6 +110,4 @@ require "../config/control.php"
     </script>
 
 
-</body>
-
-</html>
+<?php include 'footer.php' ?>

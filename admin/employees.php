@@ -3,9 +3,9 @@
 include 'nav.php'
 ?>
 
-    <button class="btn btn-primary float-right" id="addAdmin"><i class="fas fa-plus"></i>&nbsp;Add new employee</button>
+    <button class="btn btn-primary float-right" data-toggle="modal" data-target="#addEmployeeModal"><i class="fas fa-plus"></i>&nbsp;Add new employee</button>
     <br><br>
-    <table class="display dt-responsive nowrap table table-striped" id="table_id">
+    <table class="display dt-responsive nowrap table table-striped" id="table_id" data-plugin="dataTable">
         <thead>
             <tr>
                 <th>ID</th>
@@ -44,80 +44,7 @@ include 'nav.php'
             ?>
         </tbody>
     </table>
-        
-    <!-- The Modal -->
-    <div id="addAdminModal" class="modal">
 
-        <!-- Modal content -->
-        <div class="modal-content modal-size_md">
-            <div class="modal-header">
-                <span class="close" id="closeModal">&times;</span>
-                <h4>Add new admin</h4>
-            </div>
-            <div class="modal-body">
-
-                <form action="./controller/employeeControl.php" method="POST" enctype="multipart/form-data" class="form-container">
-                    <div class="form-avatar">
-                        <div class="avatar-container">
-                            <img src="https://images.pexels.com/photos/736842/pexels-photo-736842.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                        </div>
-                        <input type="file" name="file" id="file">
-                    </div>
-                    <div class="form-details">
-
-                        <div class="form-input">
-
-                            <select name="title" id="title">
-                                <option disabled selected>Title</option>
-                                <option value="Dr.">Dr.</option>
-                                <option value="Ms.">Ms.</option>
-                                <option value="Mr.">Mr.</option>
-                            </select>
-
-                        </div>
-                        <div class="form-input">
-                            <input type="text" name="firstName" id="firstName" autocomplete="off">
-                            <label for="firstName" class="label-input">
-                                <span class="content-input_name">First Name</span>
-                            </label>
-                        </div>
-                        <div class="form-input">
-                            <input type="text" name="lastName" id="lastName" autocomplete="off">
-                            <label for="lastName" class="label-input">
-                                <span class="content-input_name">Last Name</span>
-                            </label>
-                        </div>
-                        <div class="form-input">
-                            <input type="text" name="contact" id="contact" autocomplete="off">
-                            <label for="contact" class="label-input">
-                                <span class="content-input_name">Contact</span>
-                            </label>
-                        </div>
-                        <div class="form-input">
-                            <input type="text" name="email" id="email" autocomplete="off">
-                            <label for="email" class="label-input">
-                                <span class="content-input_name">Email</span>
-                            </label>
-                        </div>
-                        <div class="form-input">
-
-                            <select name="role" id="role">
-                                <option disabled selected>Role</option>
-                                <option value="DOCTOR">DOCTOR</option>
-                                <option value="EMPLOYEE">EMPLOYEE</option>
-
-                            </select>
-
-                        </div>
-                        <button type="submit" class="button" name="addEmployee">Add</button>
-                    </div>
-                </form>
-
-            </div>
-
-        </div>
-
-    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/0c5646b481.js"></script>

@@ -1,8 +1,8 @@
 <?php
 include 'nav.php'
 ?>
-       
-    <button class="btn btn-primary float-right" id="addCategory"><i class="fas fa-plus"></i>&nbsp;Add new category</button>
+
+    <button class="btn btn-primary float-right" id="addServiceModal" data-toggle="modal" data-target="#addServiceModal"><i class="fas fa-plus"></i>&nbsp;Add new category</button>
     <br><br>
     <table class="display dt-responsive nowrap table table-striped" id="table_id">
         <thead>
@@ -43,49 +43,6 @@ include 'nav.php'
             ?>
         </tbody>
     </table>
-    <!-- The Modal -->
-    <div id="addCategoryModal" class="modal">
-
-        <!-- Modal content -->
-        <div class="modal-content modal-size_md">
-            <div class="modal-header">
-                <span class="close" id="closeModal">&times;</span>
-                <h4>Add new admin</h4>
-            </div>
-            <div class="modal-body">
-
-                <form action="./controller/categoryControl.php" method="POST" enctype="multipart/form-data" class="form-container">
-                    <div class="form-avatar">
-                        <div class="avatar-container">
-                            <img src="https://images.pexels.com/photos/736842/pexels-photo-736842.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                        </div>
-                        <input type="file" name="file" id="file">
-                    </div>
-                    <div class="form-details">
-
-
-                        <div class="form-input">
-                            <input type="text" name="name" id="name" autocomplete="off">
-                            <label for="name" class="label-input">
-                                <span class="content-input_name">Name</span>
-                            </label>
-                        </div>
-                        <label for="description">Description</label>
-                        <textarea name="description" id="description" cols="10" rows="10"></textarea>
-                        <!-- <label for="description" class="label-input">
-                                <span class="content-input_name">Description</span>
-                            </label> -->
-
-
-                        <button type="submit" class="button" name="addCategory">Add</button>
-                    </div>
-                </form>
-
-            </div>
-
-        </div>
-
-    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/0c5646b481.js"></script>

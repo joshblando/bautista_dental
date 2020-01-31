@@ -52,7 +52,7 @@ require "../config/control.php"
 
 <body>
 
-  
+
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -88,7 +88,12 @@ require "../config/control.php"
     </div>
   </div>
 
-    <?php 
+  <?php
+    include './modals/add-admin.php';
+    include './modals/add-employee.php';
+    include './modals/add-services.php';
+   ?>
+    <?php
 
         $adminId = $_SESSION['adminId'];
         $getAdmin = $connect->prepare("SELECT * FROM admin WHERE adminId=:adminId");
@@ -105,7 +110,7 @@ require "../config/control.php"
             </div>
 
             <ul class="list-unstyled components">
-               
+
                 <li>
                     <a href="index.php">Dashboard</a>
                 </li>
@@ -197,7 +202,7 @@ require "../config/control.php"
                             <li class="nav-item">
                                <a class="nav-link" href="./controller/logout.php?logout=<?php echo $_SESSION['id'] ?>"><span class="logout-content"><i class="fas fa-sign-out-alt logout"></i></span></a>
                             </li>
-                          
+
                         </ul>
                     </div>
                 </div>

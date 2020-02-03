@@ -39,12 +39,18 @@ require "../config/control.php"
             padding: 10px !important;
         }
         .fc-event{
-            border-radius: 30px !important;
+            border-radius: 10px !important;
             color: #fff !important;
             padding:5px !important;
         }
         .nav-item{
             padding: 0px 10px !important;
+        }
+        .message__container a.dropdown-item{
+            border-bottom: 1px solid #dce3ea !important;
+            max-height: 183px;
+            contain: layout;
+            overflow-y: auto;
         }
     </style>
 
@@ -52,46 +58,14 @@ require "../config/control.php"
 
 <body>
 
-
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          <span class="badge badge-primary float-right">PENDING</span>
-          <div class="row">
-            <div class="col-lg-12">
-
-              <img class="img rounded img-fluid" src="https://cdn.pixabay.com/photo/2016/11/28/12/22/dentist-1864921_960_720.jpg">
-            </div>
-          </div>
-          <br>
-
-          <table class="table table-striped">
-            <tbody>
-              <tr>
-                <td>Dentist : <span  id="eventTitle"></span></td>
-              </tr>
-              <tr>
-                <td>Service : <span  id="eventInfo"></span></td>
-              </tr>
-              <tr>
-                <td>Schedule : <span  id="eventDate"></span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Approve</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <?php
     include './modals/add-admin.php';
     include './modals/add-employee.php';
     include './modals/add-services.php';
+    include './modals/event-details.php';
+    include './modals/calendar-action.php';
+    include './modals/message.php';
+
    ?>
     <?php
 
@@ -123,10 +97,13 @@ require "../config/control.php"
                         <li>
                             <a href="calendar.php">Calendar</a>
                         </li>
+                         <li>
+                            <a href="time-sched.php">Dentists</a>
+                        </li>
                     </ul>
                 </li>
                   <li>
-                    <a href="message.php">Messages  <span class="float-right badge badge-danger">2</span></a>
+                    <a href="message.php">Messages</a>
                 </li>
                 <li>
                     <!-- <a href="#">Accounts</a> -->
@@ -196,10 +173,15 @@ require "../config/control.php"
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#"><i class="fas fa-bell"></i></a>
+                              <li class="nav-item dropdown pl-2 pr-2">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="fas fa-bell"></i>
+                                </a>
+                                <div class="dropdown-menu message__container" style="left:-338px !important;" aria-labelledby="navbarDropdownMenuLink2">
+                                    <a class="dropdown-item" href="userAccount.ph">this is a sample message</a>
+                                </div>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item notif__conts">
                                <a class="nav-link" href="./controller/logout.php?logout=<?php echo $_SESSION['id'] ?>"><span class="logout-content"><i class="fas fa-sign-out-alt logout"></i></span></a>
                             </li>
 
@@ -207,3 +189,6 @@ require "../config/control.php"
                     </div>
                 </div>
             </nav>
+             <script src="../js/jquery.min.js"></script>
+            <script src="../js/jquery-ui.min.js"></script>
+            <script src="js/notification.js"></script>

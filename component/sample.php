@@ -1,5 +1,5 @@
-<?php include_once 'modal/inquiry-modal.php'; ?>
-<link rel="stylesheet" type="text/css" href="./style/nav.css">
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand mr-4" href="#">
     <img src="./logo/tooth.png" width="100" height="100" alt="">
@@ -22,10 +22,7 @@
         <a class="nav-link" href="#">Gallery</a>
       </li>
       <li class="nav-item">
-        <span class="nav-link" data-toggle="modal" data-target="#inquiryModal">Inquiry</span>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link btn btn-primary mk__appointment" href="?appoint">Make Appointment</a>
+        <a class="nav-link" href="?appoint">Make Appoinment</a>
       </li>
     </ul>
     <div class="form-inline my-2 my-lg-0">
@@ -66,7 +63,7 @@
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-bell"></i>
         </a>
-        <div class="dropdown-menu message__container" style="left:-463px !important;" aria-labelledby="navbarDropdownMenuLink2">
+        <div class="dropdown-menu message__container" style="left:-185px !important;" aria-labelledby="navbarDropdownMenuLink2">
             <a class="dropdown-item" href="userAccount.ph">this is a sample message</a>
         </div>
       </li>
@@ -77,8 +74,3 @@
     </div>
   </div>
 </nav>
-<script src="./js/jquery.min.js"></script>
-<script src="./js/jquery-ui.min.js"></script>
-<script src = "./js/notification.js"></script>
-<script src="https://kit.fontawesome.com/0c5646b481.js" crossorigin="anonymous"></script>
-

@@ -13,16 +13,25 @@ require_once "./config/control.php";
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <link rel="stylesheet" href="./style/nav.css" />
-  <link rel="stylesheet" href="./style/general.css" />
-  <link rel="stylesheet" href="./style/main.css" />
+  <!-- <link rel="stylesheet" href="./style/nav.css" /> -->
+  <!-- <link rel="stylesheet" href="./style/general.css" /> -->
+  <link rel="stylesheet" href="./style/main.css" /> 
+  <link rel="stylesheet" type="text/css" href="./admin/style/bootstrap.min.css">
+  <style>
+    .btn-outline{
+      background: transparent;
+      color: #fff;
+      border-color: #fff;
+    }
+  </style>
+
   <title>Document</title>
 </head>
 
 <body>
   <header>
     <?php
-    include "./component/navigation.php"
+    include "./component/navigation.php";
     ?>
     <div class="landing">
       <div class="background-image"></div>
@@ -34,7 +43,7 @@ require_once "./config/control.php";
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, quam?
           Id ducimus debitis cum quos!
         </p>
-        <button>Request Now!</button>
+        <button class="btn btn-outline">Request Now!</button>
       </div>
     </div>
   </header>
@@ -52,7 +61,7 @@ require_once "./config/control.php";
             </div>
           </div>
           <div class="card-content">
-            <button>Make appointment</button>
+            <button class="btn btn-outline">Make appointment</button>
           </div>
         </div>
         <div class="image">
@@ -63,6 +72,8 @@ require_once "./config/control.php";
   </main>
   <script src="https://kit.fontawesome.com/0c5646b481.js" crossorigin="anonymous"></script>
   <script src="js/nav.js"></script>
+  <script src="admin/js/bootstrap.min.js"></script>
+  
 </body>
 
 </html>

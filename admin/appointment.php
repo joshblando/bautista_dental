@@ -58,7 +58,16 @@ include 'nav.php'
           <td><?php echo $start ?></td>
           <td><?php echo $status ?></td>
           <td>
-            <a href="#"><span class="icon"><i class="fas fa-eye view"></i></span></a>
+            <a href="#" class="btn btn-info btn-sm"><span class="icon"><i class="fas fa-eye view"></i></span></a>
+            <?php if ($status == 'PENDING') { ?>
+              <a href="<?php echo '../api/approved-cancel-status.php?id='.$appointmentId.'&&action=approve' ?>" class="btn btn-success btn-sm"><span class="icon"><i class="fas fa-check view"></i></span></a> 
+            <?php } ?>
+            <?php if ($status == 'APPROVED') { ?>
+              <a href="<?php echo '../api/approved-cancel-status.php?id='.$appointmentId.'&&action=cancel' ?>" class="btn btn-danger btn-sm"><span class="icon"><i class="fas fa-minus view"></i></span></a> 
+            <?php } ?>
+            <?php if ($status == 'CANCELED') { ?>
+              <a href="" class="btn btn-warning btn-sm"><span class="icon"><i class="fas fa-pencil view"></i></span></a> 
+            <?php } ?>
           </td>
         </tr>
       <?php

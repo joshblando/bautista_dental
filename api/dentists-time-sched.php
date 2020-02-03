@@ -26,10 +26,15 @@
                 if ($removedSched != null) { 
                     foreach ($removedSched as $removed) { 
                         $sample = array_diff($array, $removed);
+                        // for ($k=0; $k < count($sample); $k++) { 
+                            if (!empty($sample[$i])) {
+                                array_push($finalData, $sample[$i]);     
+                            }
+                        // }
                         $finalData = array($sample);
                     }
 
-                    echo json_encode($finalData);                     
+                    // echo json_encode($finalData);                     
                     // $finalData = $newData; 
                 }         
                 else{

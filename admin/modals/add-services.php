@@ -24,13 +24,13 @@
             <div class="col-lg-12">
                 <div class="form-group">
                   <label for="">Name</label>
-                  <input type="text" class="form-control" name="name" id="name" autocomplete="off">
+                  <input type="text" class="form-control" name="name" id="service_name" autocomplete="off">
                 </div>
             </div>
             <div class="col-lg-12">
                 <div class="form-group">
                   <label for="">Description</label>
-                  <textarea class="form-control" name="description" id="description" cols="10" rows="10"></textarea>
+                  <textarea class="form-control" name="description" id="service_description" cols="10" rows="10"></textarea>
                 </div>
             </div>
           </div>

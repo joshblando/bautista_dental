@@ -1,26 +1,48 @@
 <?php  
-	 require_once "../../config/control.php";
+	$connect = mysqli_connect("localhost", "root", "", "bautista_dental_db");
 
-    $getNotification = $connect->prepare("SELECT * from notification WHERE notifiable = 'ADMIN'");
-    $getNotification->execute();
-    $notif = $getNotification->fetchAll();
+    if(isset($_POST['view'])){
 
-    $getNotificationUnread = $connect->prepare("SELECT count(id) as unread from notification WHERE notifiable = 'ADMIN' && readAt = null");
-    $getNotificationUnread->execute();
-    $notif_unread = $getNotificationUnread->fetchAll();
-    $array = [];
+    if($_POST["view"] != '')
+    {
+        $update_query = "UPDATE notification SET seen = 1 WHERE seen=0 AND notifiable='ADMIN'";
+        mysqli_query($connect, $update_query);
+    }
+    $query = "SELECT * FROM notification WHERE notifiable='ADMIN' ORDER BY readAt ASC, createdAt DESC";
+    $result = mysqli_query($connect, $query);
+    $output = '';
+    if(mysqli_num_rows($result) > 0)
+    {
+     while($row = mysqli_fetch_array($result))
+     {
+       if ($row["readAt"] == '0000-00-00') {
+           $output .= '<a class="dropdown-item notif__item unread__notif" href="ajax/readMessage.php?id='.$row["notif_id"].'&&redirect_url='.$row["redirectUrl"].'"><span>'.$row["details"].'</span><br /><small class="float-right notif__date">'.date('Y-m-d H:i a', strtotime($row["createdAt"])).'</small></a>';
+       }
+       else{
+            $output .= '<a class="dropdown-item notif__item" href="ajax/readMessage.php?id='.$row["notif_id"].'&&redirect_url='.$row["redirectUrl"].'"><span>'.$row["details"].'</span><br /><small class="float-right notif__date">'.date('Y-m-d H:i a', strtotime($row["createdAt"])).'</small></a>';
+       }
+       
 
-    // echo $notif_unread[0]['unread'];
-
-    foreach ($notif as $key => $value) {
-    	$array[] = [
-    		'details' => $value['details'],
-    		'url_redirect' => $value['redirectUrl'],
-    		'id' => $value['notif_id'],
-    		'unread' => $notif_unread[0]['unread'],
-    	];
+     }
+    }
+    else{
+         $output .= '
+         <a class="dropdown-item" href="#" class="text-bold text-italic">No Noti Found</a><';
     }
 
-    echo json_encode($array);
+
+
+    $status_query = "SELECT * FROM notification WHERE seen=0 AND notifiable='ADMIN'";
+    $result_query = mysqli_query($connect, $status_query);
+    $count = mysqli_num_rows($result_query);
+    $data = [
+        'notification' => $output,
+        'unseen_notification'  => $count
+    ];
+
+    echo json_encode($data);
+
+    }
+
 
 ?>

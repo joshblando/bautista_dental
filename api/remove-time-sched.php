@@ -8,6 +8,10 @@
     $shuffled = str_shuffle($str);
     $generatedID = substr($shuffled, 0, 8);
 
+    $dateSched = $connect->prepare("SELECT time FROM schedule WHERE date= :date && userId = :userId");
+    $dateSched->execute(["date" => $_GET['date'], "userId" => $_GET['employee'], "time" => $_GET['time']]);
+    $rowdateSched = $dateSched->fetch(PDO::FETCH_ASSOC);
+
     $sched_result = [
         "scheduleId" => $generatedID,
         "employeeId" => $_GET['employee'],
@@ -19,9 +23,9 @@
                                                 VALUES(:scheduleId, :employeeId, :date, :time)");
     $newTimeSched->execute($sched_result);
 
-    echo '<script>
-             alert("Appointment Successfully Approved");
-             window.location="../admin/time-sched.php";
-          </script>';
+    // echo '<script>
+    //          alert("Appointment Successfully Approved");
+    //          window.location="../admin/time-sched.php";
+    //       </script>';
   
 ?>

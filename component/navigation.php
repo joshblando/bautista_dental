@@ -1,5 +1,6 @@
 <?php include_once 'modal/inquiry-modal.php'; ?>
 <link rel="stylesheet" type="text/css" href="./style/nav.css">
+<link rel="stylesheet" type="text/css" href="./admin/style/notif.css">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand mr-4" href="#">
     <img src="./logo/tooth.png" width="100" height="100" alt="">
@@ -65,6 +66,7 @@
        <li class="nav-item dropdown pl-2 pr-2">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-bell"></i>
+          <span class="badge badge-danger notif_count"></span>
         </a>
         <div class="dropdown-menu message__container" style="left:-463px !important;" aria-labelledby="navbarDropdownMenuLink2">
             <a class="dropdown-item" href="userAccount.ph">this is a sample message</a>

@@ -17,8 +17,8 @@ $(document).ready(function(){
 	  events:'../api/dentists-time-sched.php',
 	  eventClick: function(info) {
 	  	// console.log(info.event.title);
-	  	// $.get('../api/remove-time-sched.php', {'time' :info.event.title, 'date':info.event.extendedProps.dateSched});
-	    window.location='../api/remove-time-sched.php?time='+info.event.title+'&&date='+info.event.extendedProps.dateSched+'&&employee='+$('#dentist-sched').val();
+	  	$.get('../api/remove-time-sched.php', {'time' :info.event.title, 'date':info.event.extendedProps.dateSched, 'employee' : $('#dentist-sched').val()});
+	    // window.location='../api/remove-time-sched.php?time='+info.event.title+'&&date='+info.event.extendedProps.dateSched+'&&employee='+$('#dentist-sched').val();
 	  	info.event.remove(); 	
 	  }
 	});

@@ -15,13 +15,13 @@
             </div>
             <div class="col-lg-12">
               <div class="form-control">
-                <input class="form-control" type="file" name="file" id="file">
+                <input class="form-control" type="file" name="file" id="admin_file">
               </div>
             </div>
             <div class="col-lg-6">
                 <div class="form-group">
                   <label for="">EmployeeID</label>
-                  <input type="text" class="form-control" name="employeeId" id="employeeId" autocomplete="off">
+                  <input type="text" class="form-control" name="employeeId" id="admin_employeeId" autocomplete="off">
                 </div>
             </div>
           </div>
@@ -29,19 +29,19 @@
             <div class="col-lg-12">
                 <div class="form-group">
                   <label for="">Firstname</label>
-                  <input type="text" class="form-control" name="firstName" id="firstName" autocomplete="off">
+                  <input type="text" class="form-control" name="firstName" id="admin_firstName" autocomplete="off">
                 </div>
             </div>
             <div class="col-lg-12">
                 <div class="form-group">
                   <label for="">Lastname</label>
-                  <input type="text" class="form-control" name="lastName" id="lastName" autocomplete="off">
+                  <input type="text" class="form-control" name="lastName" id="admin_lastName" autocomplete="off">
                 </div>
             </div>
             <div class="col-lg-12">
                 <div class="form-group">
                   <label for="">Password</label>
-                  <input type="password" class="form-control" name="password" id="password" autocomplete="off">
+                  <input type="password" class="form-control" name="password" id="admin_password" autocomplete="off">
                 </div>
             </div>
           </div>

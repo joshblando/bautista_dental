@@ -7,10 +7,6 @@
     $employee = 'Ma2hzx81';
     $finalData = [];
     $newData = [];
-    // $sql_removedSched = "SELECT start from schedule WHERE employeeId=:employee && date=:date";
-    // $appoinment_timeSlot = $connect->prepare($sql_removedSched);
-    // $appoinment_timeSlot->execute(["employee" => $employee, "date" => $checkDate]);
-    // $appoinmentSlots = $appoinment_timeSlot->fetchAll();
 
 	$plag = 0;
 
@@ -26,15 +22,15 @@
                 if ($removedSched != null) { 
                     foreach ($removedSched as $removed) { 
                         $sample = array_diff($array, $removed);
-                        // for ($k=0; $k < count($sample); $k++) { 
-                            if (!empty($sample[$i])) {
-                                array_push($finalData, $sample[$i]);     
+                         for ($k=0; $k < count($sample); $k++) { 
+                            if (!empty($sample[$k])) {
+                                array_push($finalData, $sample[$k]);     
                             }
-                        // }
+                         }
                         $finalData = array($sample);
                     }
 
-                    // echo json_encode($finalData);                     
+                    echo  date('Y').'-'.$i.'-'.$e.'----'.json_encode($finalData);                     
                     // $finalData = $newData; 
                 }         
                 else{
@@ -54,5 +50,5 @@
         }
     }
 
-    echo json_encode($timeSched);
+    // echo json_encode($timeSched);
 ?>

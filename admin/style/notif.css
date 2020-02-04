@@ -1,0 +1,10 @@
+.unread__notif{
+	background-color:#f0f7fc;
+}
+.notif__date{
+	font-size: 8px;
+}
+
+.notif__item span{
+	font-size:14px;
+}

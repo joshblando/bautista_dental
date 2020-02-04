@@ -40,25 +40,25 @@
             <div class="col-lg-12">
                 <div class="form-group">
                   <label for="">Firstname</label>
-                  <input type="text" class="form-control" name="firstName" id="firstName" autocomplete="off">
+                  <input type="text" class="form-control" name="firstName" id="employee_firstName" autocomplete="off">
                 </div>
             </div>
             <div class="col-lg-12">
                 <div class="form-group">
                   <label for="">Lastname</label>
-                  <input type="text" class="form-control" name="lastName" id="lastName" autocomplete="off">
+                  <input type="text" class="form-control" name="lastName" id="employee_lastName" autocomplete="off">
                 </div>
             </div>
             <div class="col-lg-12">
                 <div class="form-group">
                   <label for="">Contact</label>
-                  <input class="form-control" type="text" name="contact" id="contact" autocomplete="off">
+                  <input class="form-control" type="text" name="contact" id="employee_contact" autocomplete="off">
                 </div>
             </div>
             <div class="col-lg-12">
                 <div class="form-group">
                   <label for="">Email</label>
-                  <input class="form-control" type="email" name="email" id="email" autocomplete="off">
+                  <input class="form-control" type="email" name="email" id="employee_email" autocomplete="off">
                 </div>
             </div>
             <div class="col-lg-12">

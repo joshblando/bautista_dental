@@ -1,0 +1,54 @@
+html, body {
+  position: relative;
+  height: 100%;
+  overflow-x: hidden;
+}
+body {
+  background: #eee;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color:#000;
+  margin: 0;
+  padding: 0;
+}
+.dropzone.dz-clickable {
+    border-radius: 10px;
+}
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: pink;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.swiper-container{
+	height: 40pc;
+	/*position: fixed !important;*/
+  top: 0;
+}
+#content{
+	width: 100% !important;
+}
+.polygon{
+	clip-path: polygon(0 0, 99% 0, 102% 99%, 0 60%) !important;
+  position: fixed !important;
+  top: 0 !important;
+
+}
+.navbar{
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+}

@@ -35,10 +35,12 @@ require "../config/control.php"
   <?php
     include './modals/add-admin.php';
     include './modals/add-employee.php';
+    include './modals/edit-employee.php';
     include './modals/add-services.php';
     include './modals/event-details.php';
     include './modals/calendar-action.php';
     include './modals/message.php';
+    include './modals/edit-service.php';
 
    ?>
     <?php

@@ -15,7 +15,10 @@ require_once "./config/control.php";
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <!-- <link rel="stylesheet" href="./style/nav.css" /> -->
   <!-- <link rel="stylesheet" href="./style/general.css" /> -->
-  <link rel="stylesheet" href="./style/main.css" /> 
+  <link rel="stylesheet" href="./style/main.css" />
+  <link rel="stylesheet" href="./style/home.css" />
+  <link rel="stylesheet" type="text/css" href="./admin/style/swiper.css">
+
   <link rel="stylesheet" type="text/css" href="./admin/style/bootstrap.min.css">
   <style>
     .btn-outline{
@@ -29,51 +32,77 @@ require_once "./config/control.php";
 </head>
 
 <body>
-  <header>
-    <?php
-    include "./component/navigation.php";
-    ?>
-    <div class="landing">
-      <div class="background-image"></div>
-      <div class="landing-overlay">
-        <div class="landing-overlay_header">
-          Bautist Dental Center
+  <!-- <header> -->
+  <!-- </header> -->
+  <?php
+  include "./component/navigation.php";
+  ?>
+  <div class="row">
+    <div  class="col-lg-12 " style="padding:0;margin:0;">
+      <div class="swiper-container">
+
+        <div class="swiper-scrollbar"></div>
+        <div class="swiper-wrapper">
+          <?php
+          require_once "./config/control.php";
+
+          $getBanners = $connect->prepare("SELECT * from media WHERE page=:page AND component=:component");
+          $getBanners->execute(['component' => 'BANNER', 'page' => 'HOME']);
+          $banners = $getBanners->fetchAll();
+
+          foreach ($banners as $banner) {
+
+            $img = './images/'.$banner['image'];
+
+
+            ?>
+            <div class="swiper-slide"><img class="img img-fluid" src="<?php echo $img; ?>"></div>
+
+            <?php
+          }
+          ?>
         </div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, quam?
-          Id ducimus debitis cum quos!
-        </p>
-        <button class="btn btn-outline">Request Now!</button>
+
       </div>
     </div>
-  </header>
-  <main>
-    <section class="section-one">
-      <div class="section-one_content">
-        <div class="details">
-          <div class="card-content">
-            <div class="card-header">New Patient Promo</div>
-            <div class="card-description">
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Optio, nihil?
-              </p>
-            </div>
+  </div>
+  <br><br><br>
+  <div class="row">
+
+
+    <?php
+
+    $getCategories = $connect->prepare("SELECT * from service");
+    $getCategories->execute();
+    $categories = $getCategories->fetchAll();
+
+    foreach ($categories as $category) {
+      $categoryId = $category['serviceId'];
+      // $photo = $category['photo'];
+      $description = $category['description'];
+      // $name = $category['name'];
+
+      ?>
+      <div class="col-lg-4">
+        <div class="card" style="height:400px;">
+          <img class="card-img-top" src="https://images.app.goo.gl/B22BUm6hRyGnjVgh7" alt="Card image cap">
+          <div class="card-body">
+            <p class="card-text"><?php echo $description; ?></p>
           </div>
-          <div class="card-content">
-            <button class="btn btn-outline">Make appointment</button>
-          </div>
-        </div>
-        <div class="image">
-          <img src="https://sa1s3optim.patientpop.com/assets/images/provider/photos/1957630.png" alt="dental" />
         </div>
       </div>
-    </section>
-  </main>
+      <?php
+    }
+    ?>
+  </div>
+  <br><br><br><br><br><br>
+  <script src='./admin/js/swiper.js'></script>
+  <script src='./admin/js/home.js'></script>
   <script src="https://kit.fontawesome.com/0c5646b481.js" crossorigin="anonymous"></script>
-  <script src="js/nav.js"></script>
+  <script src="./js/nav.js"></script>
   <script src="admin/js/bootstrap.min.js"></script>
-  
+
+
 </body>
 
 </html>

@@ -4,7 +4,7 @@
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: pink;
+  background: transparent;
 
   /* Center slide text vertically */
   display: -webkit-box;
@@ -21,12 +21,24 @@
   align-items: center;
 }
 .swiper-container{
-	height: 40pc;
-	margin-top:20px; 
+	height: 52pc;
+	margin-top:20px;
+  width: 100%;
+  /* border-top-left-radius:10px !important;
+  border-top-right-radius:10px !important;
+  border-bottom-left-radius: 50% 20% !important;
+  border-bottom-right-radius: 50% 20% !important; */
 }
-#content{
+/* #content{
 	width: 83% !important;
-}
+} */
 .polygon{
-	clip-path: polygon(0 0, 99% 0, 102% 99%, 0 60%) !important;
+	 clip-path: polygon(0 0, 99% 0, 99% 99%, 0 60%) !important;
+   position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  z-index: 1;
+}
+.navbar-light{
+  background: rgba(255, 255, 255, 0.5) !important;
 }

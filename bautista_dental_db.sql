@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 04, 2020 at 08:46 PM
+-- Generation Time: Feb 07, 2020 at 01:58 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -117,6 +117,29 @@ INSERT INTO `category` (`id`, `categoryId`, `name`, `description`, `photo`, `cre
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cms_content`
+--
+
+CREATE TABLE `cms_content` (
+  `id` int(11) NOT NULL,
+  `section` varchar(100) DEFAULT NULL,
+  `title` varchar(10000) DEFAULT NULL,
+  `description` varchar(10000) DEFAULT NULL,
+  `image` varchar(1000) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cms_content`
+--
+
+INSERT INTO `cms_content` (`id`, `section`, `title`, `description`, `image`) VALUES
+(1, 'ABOUT', 'HISTORY', 'YWRhc2Rhc2RzZHNmc2FzZGFkYWQNCmFzZGFzZA0KYWRhc2Rhc2QNCmFkYWRhcw==', NULL),
+(2, 'ABOUT', 'MISSION', 'd3dlcjM0cmlvcmp0aWpydA0KcnRna292cGdydmtwbw==', NULL),
+(3, 'ABOUT', 'VISION', 'ZXJpamZlb2lqaWNqY29pY3Blamlyb2pndmll', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `employee`
 --
 
@@ -140,6 +163,35 @@ CREATE TABLE `employee` (
 INSERT INTO `employee` (`id`, `employeeId`, `title`, `firstName`, `lastName`, `contact`, `email`, `photo`, `role`, `createdAt`) VALUES
 (1, 'Ma2hzx7I', 'Dr.', 'Bautista', 'Bautista', '09876543212', 'bautista@test.com', NULL, 'DOCTOR', '2020-01-12 14:41:02'),
 (2, 'Ma2hzx81', 'Dr.', 'Ok', 'OK', '0987654321', 'ok@test.com', NULL, 'DENTIST', '2020-01-19 17:50:25');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `media`
+--
+
+CREATE TABLE `media` (
+  `id` int(11) NOT NULL,
+  `mediaID` varchar(200) NOT NULL,
+  `image` varchar(1000) NOT NULL,
+  `imageText` varchar(1000) DEFAULT NULL,
+  `page` varchar(1000) DEFAULT NULL,
+  `component` varchar(500) DEFAULT NULL,
+  `createdAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `media`
+--
+
+INSERT INTO `media` (`id`, `mediaID`, `image`, `imageText`, `page`, `component`, `createdAt`) VALUES
+(22, 'GvYwop9V', 'hao-shaw-Dqrlp6cMLkE-unsplash.jpg', NULL, 'HOME', 'BANNER', '2020-02-05 17:47:53'),
+(23, '8PTfFEe6', 'hao-shaw-tL4iLYL9Q5E-unsplash.jpg', NULL, 'HOME', 'BANNER', '2020-02-05 17:47:53'),
+(24, 'GvserC7M', 'jurica-koletic-7YVZYZeITc8-unsplash.jpg', NULL, 'HOME', 'BANNER', '2020-02-05 17:47:54'),
+(25, 'eCEdVc3f', 'ben-parker-OhKElOkQ3RE-unsplash.jpg', NULL, 'GALLERY', 'IMAGE', '2020-02-06 17:04:38'),
+(26, 'hQFgW0O5', 'alexander-krivitskiy-zle2_jp-AUw-unsplash.jpg', NULL, 'GALLERY', 'IMAGE', '2020-02-06 17:04:39'),
+(27, 'AWfnHzMv', 'hao-shaw-Dqrlp6cMLkE-unsplash.jpg', NULL, 'GALLERY', 'IMAGE', '2020-02-06 17:04:39'),
+(28, '96bP71oN', 'lesly-juarez-1AhGNGKuhR0-unsplash.jpg', NULL, 'GALLERY', 'IMAGE', '2020-02-06 17:04:40');
 
 -- --------------------------------------------------------
 
@@ -299,9 +351,21 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `cms_content`
+--
+ALTER TABLE `cms_content`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `employee`
 --
 ALTER TABLE `employee`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `media`
+--
+ALTER TABLE `media`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -357,10 +421,22 @@ ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `cms_content`
+--
+ALTER TABLE `cms_content`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `media`
+--
+ALTER TABLE `media`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `message`

@@ -2,35 +2,27 @@ var swiper = new Swiper('.swiper-container', {
   scrollbar: {
     el: '.swiper-scrollbar',
     hide: true,
-    on:{
-      LazyImageReady: function(s){
-        console.log(s);
-        if (!this.autoplay.running) {
-          this.param.autoplay = {
-            delay:4000,
-            disableOnInteraction:true, 
-          };
-          this.startAutoplay();
-        }
-      }
-    }
-    // onLazyImageReady: function(s){
-    //   console.log(s);
-    //   if (!s.param.autoplay) {
-    //     s.param.autoplay = 10000;
-    //     s.startAutoplay();
-    //   }
-    // }
   },
+  autoplay: {
+     delay: 2500,
+     disableOnInteraction: false
+ },
+ loop: true,
 });
 
+
 var dropzone = new Dropzone('#demo-upload', {
-  previewTemplate: document.querySelector('#preview-template').innerHTML,
+  // previewTemplate: document.querySelector('#preview-template').innerHTML,
   parallelUploads: 2,
   thumbnailHeight: 120,
   thumbnailWidth: 120,
-  maxFilesize: 3,
+  maxFilesize: 6,
   filesizeBase: 1000,
+  success:function(file, status){
+
+      $('.swiper-wrapper').append('<div class="swiper-slide"><img class="img img-fluid" src="../../images/'+file.name+'"></div>');
+
+  },
   thumbnail: function(file, dataUrl) {
     if (file.previewElement) {
       file.previewElement.classList.remove("dz-file-preview");
@@ -42,7 +34,8 @@ var dropzone = new Dropzone('#demo-upload', {
       }
       setTimeout(function() { file.previewElement.classList.add("dz-image-preview"); }, 1);
     }
-  }
+  },
+
 
 });
 
@@ -83,5 +76,3 @@ dropzone.uploadFiles = function(files) {
     }
   }
 }
-
-

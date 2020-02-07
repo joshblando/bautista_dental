@@ -9,7 +9,7 @@
   <div class="col-lg-12">
     <!-- <section> -->
        <div id="dropzone">
-        <form class="dropzone needsclick" id="demo-upload" action="#">
+        <form class="dropzone needsclick" id="demo-upload" action="../ajax/file-upload.php">
           <div class="dz-message needsclick">
             Drop files here or click to upload.
           </div>
@@ -18,25 +18,35 @@
     <!-- </section> -->
   </div>
   <br><br>
-  <div  class="col-lg-12 polygon">
-    <div class="swiper-container">
+    <div class="container" width="100%">
+      <div  class="col-lg-12">
+        <div class="swiper-container">
 
-      <div class="swiper-scrollbar"></div>
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"><img class="img img-fluid" src="../../assets/img/slide1.jpg"></div>
-        <div class="swiper-slide">Slide 2</div>
-        <div class="swiper-slide">Slide 3</div>
-        <div class="swiper-slide">Slide 4</div>
-        <div class="swiper-slide">Slide 5</div>
-        <div class="swiper-slide">Slide 6</div>
-        <div class="swiper-slide">Slide 7</div>
-        <div class="swiper-slide">Slide 8</div>
-        <div class="swiper-slide">Slide 9</div>
-        <div class="swiper-slide">Slide 10</div>
+          <div class="swiper-scrollbar"></div>
+          <div class="swiper-wrapper">
+            <?php
+            require_once "../../config/control.php";
+
+            $getBanners = $connect->prepare("SELECT * from media WHERE page=:page AND component=:component");
+            $getBanners->execute(['component' => 'BANNER', 'page' => 'HOME']);
+            $banners = $getBanners->fetchAll();
+
+            foreach ($banners as $banner) {
+
+              $img = '../../images/'.$banner['image'];
+
+
+              ?>
+              <div class="swiper-slide"><img class="img img-fluid" src="<?php echo $img; ?>"></div>
+
+              <?php
+            }
+            ?>
+          </div>
+
+        </div>
       </div>
-
     </div>
-  </div>
 </div>
 
 <!-- <script src="../js/dropzone-amd-module.min.js"></script> -->
@@ -48,5 +58,4 @@
 
 <?php
   include './footer.php';
-?>   
-        
+?>

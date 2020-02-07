@@ -35,7 +35,7 @@ include 'nav.php'
                     <td><?php echo $name ?></td>
                     <td><?php echo $description ?></td>
                     <td>
-                        <a href="./service.php?categoryId=<?php echo $categoryId ?>"><span class="icon"><i class="fas fa-eye view"></i></span></a>
+                       <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#editServiceModal"><span class="icon"><i class="fas fa-edit view"></i></span></button>
                     </td>
                 </tr>
             <?php

@@ -89,10 +89,10 @@ $name = $admin['firstName'] . " " . $admin['lastName'];
             </a>
         </div>
         <div class="col-lg-12 mt-4">
-             <h3><?php echo $name ? $name : "John Doe" ?></h3>         
+             <h3><?php echo $name ? $name : "John Doe" ?></h3>
         </div>
 
-    </div>  
+    </div>
 </div>
 
 <ul class="list-unstyled components">
@@ -203,4 +203,3 @@ $name = $admin['firstName'] . " " . $admin['lastName'];
         </div>
     </div>
 </nav>
-

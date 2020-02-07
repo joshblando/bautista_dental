@@ -14,19 +14,19 @@
         <a class="nav-link" href="index.php">Home</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
+        <a class="nav-link" href="about.php">About</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Services</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Gallery</a>
+        <a class="nav-link" href="gallery.php">Gallery</a>
       </li>
       <li class="nav-item">
         <span class="nav-link" data-toggle="modal" data-target="#inquiryModal">Inquiry</span>
       </li>
       <li class="nav-item">
-        <a class="nav-link btn btn-primary mk__appointment" href="?appoint">Make Appointment</a>
+        <a class="nav-link btn btn-primary mk__appointment" href="appointment.php">Make Appointment</a>
       </li>
     </ul>
     <div class="form-inline my-2 my-lg-0">
@@ -83,4 +83,3 @@
 <script src="./js/jquery-ui.min.js"></script>
 <script src = "./js/notification.js"></script>
 <script src="https://kit.fontawesome.com/0c5646b481.js" crossorigin="anonymous"></script>
-

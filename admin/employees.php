@@ -36,7 +36,7 @@ include 'nav.php'
                     <td><?php echo $name ?></td>
                     <td><?php echo $role ?></td>
                     <td>
-                        <button class="btn btn-success btn-sm btn-edit-employee" data-email="<?php echo  $employee['email'] ?>" data-contact="<?php echo  $employee['contact'] ?>" data-lastname="<?php echo  $employee['lastName'] ?>" data-firstname="<?php echo  $employee['firstName'] ?>" data-title="<?php echo  $employee['title'] ?>" data-role="<?php echo  $employee['role'] ?>"  data-toggle="modal" data-target="#editEmployeeModal"><span class="icon"><i class="fas fa-edit view"></i></span></button>
+                        <button class="btn btn-success btn-sm btn-edit-employee" data-id="<?php  echo  $employee['employeeId'] ?>" data-email="<?php echo  $employee['email'] ?>" data-contact="<?php echo  $employee['contact'] ?>" data-lastname="<?php echo  $employee['lastName'] ?>" data-firstname="<?php echo  $employee['firstName'] ?>" data-title="<?php echo  $employee['title'] ?>" data-role="<?php echo  $employee['role'] ?>"  data-toggle="modal" data-target="#editEmployeeModal"><span class="icon"><i class="fas fa-edit view"></i></span></button>
                     </td>
                 </tr>
             <?php
@@ -48,19 +48,20 @@ include 'nav.php'
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/0c5646b481.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/zf-6.4.3/dt-1.10.20/r-2.2.3/rg-1.1.1/sc-2.0.1/datatables.min.js"></script>
+    <!-- <script type="text/javascript" src="https://cdn.datatables.net/v/zf-6.4.3/dt-1.10.20/r-2.2.3/rg-1.1.1/sc-2.0.1/datatables.min.js"></script> -->
     <!-- <script src="./js/admin.js"></script> -->
     <script>
-        $('button .edit-btn-employee').click(function(){
-          $('#edi_employee_firstname').val($(this).data('firstname'));
-          $('#edi_employee_lastname').val($(this).data('lastname'));
-          $('#edi_title').val($(this).data('title'));
-          $('#edi_role').val($(this).data('role'));
-          $('#edi_employee_contact').val($(this).data('contact'));
-          $('#edi_employee_email').val($(this).data('email'));
-        });
 
         $(document).ready(function() {
+          $('button.btn-edit-employee').click(function(){
+            $('#edi_employee_firstName').val($(this).data('firstname'));
+            $('#edi_employeeId').val($(this).data('id'));
+            $('#edi_employee_lastName').val($(this).data('lastname'));
+            $('#edi_title').val($(this).data('title'));
+            $('#edi_role').val($(this).data('role'));
+            $('#edi_employee_contact').val($(this).data('contact'));
+            $('#edi_employee_email').val($(this).data('email'));
+          });
             // dataTable
             $('#table_id').DataTable({
                 responsive: true,

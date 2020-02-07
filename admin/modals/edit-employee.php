@@ -7,7 +7,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="./controller/editEmployee.php" method="POST" enctype="multipart/form-data" class="form-container">
+      <form action="#" method="POST" enctype="multipart/form-data" class="form-container">
         <div class="modal-body">
           <div class="row">
             <!-- <div class="col-lg-12">

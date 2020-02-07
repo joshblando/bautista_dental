@@ -66,34 +66,38 @@ require_once "./config/control.php";
       </div>
     </div>
   </div>
+  <div></div>
   <br><br><br>
-  <div class="row">
+  <div class="container-fluid">
+    <div class="row">
+      <?php
 
+      $getCategories = $connect->prepare("SELECT * from service");
+      $getCategories->execute();
+      $categories = $getCategories->fetchAll();
 
-    <?php
+      foreach ($categories as $category) {
+        $categoryId = $category['serviceId'];
+        // $photo = $category['photo'];
+        $description = $category['description'];
+        // $name = $category['name'];
 
-    $getCategories = $connect->prepare("SELECT * from service");
-    $getCategories->execute();
-    $categories = $getCategories->fetchAll();
+        ?>
 
-    foreach ($categories as $category) {
-      $categoryId = $category['serviceId'];
-      // $photo = $category['photo'];
-      $description = $category['description'];
-      // $name = $category['name'];
-
-      ?>
-      <div class="col-lg-4">
-        <div class="card" style="height:400px;">
-          <img class="card-img-top" src="https://images.app.goo.gl/B22BUm6hRyGnjVgh7" alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text"><?php echo $description; ?></p>
+        <div class="col-lg-4">
+          <div class="card" style="height:400px;">
+            <img class="card-img-top" src="https://images.app.goo.gl/B22BUm6hRyGnjVgh7" alt="Card image cap">
+            <div class="card-body">
+              <p class="card-text"><?php echo $description; ?></p>
+            </div>
           </div>
         </div>
-      </div>
-      <?php
-    }
-    ?>
+        <?php
+      }
+      ?>
+
+    </div>
+
   </div>
   <br><br><br><br><br><br>
   <script src='./admin/js/swiper.js'></script>

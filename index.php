@@ -87,7 +87,7 @@ require_once "./config/control.php";
         <div class="col-lg-4">
           <div class="card" style="height:400px;">
             <img class="card-img-top" src="https://images.pexels.com/photos/52527/dentist-pain-borowac-cure-52527.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Card image cap">
-            <div class="card-body">
+            <div class="card-body text-center">
               <h5 class="card-title"><?php echo $name; ?></h5>
               <p class="card-text"><?php echo $description; ?></p>
             </div>

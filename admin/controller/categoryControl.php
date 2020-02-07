@@ -21,7 +21,7 @@ if (isset($_POST["addCategory"])) {
             "description" => $description
         ];
 
-        $addAdmin = $connect->prepare("INSERT INTO category (categoryId, name, description)
+        $addAdmin = $connect->prepare("INSERT INTO service (serviceId, name, description)
                             values (:categoryId, :name ,:description)");
         $addAdmin->execute($data);
 

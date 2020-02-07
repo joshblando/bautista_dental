@@ -51,36 +51,37 @@ require_once "./config/control.php";
         $getVision->execute();
         $vision = $getVision->fetchAll();
 	 ?>
-   <br>
+
    <div class="container-fluid">
      <div class="row">
-       <div class="col-lg-12">
-         <h1 class="text-center">History</h1>
-         <p class="text-center">
+       <div class="col-lg-12" style='color:#fff;min-height:50pc;background:linear-gradient(rgb(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://images.pexels.com/photos/908602/pexels-photo-908602.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");background-position: center;background-repeat: no-repeat;background-size: cover;'>
+         <br><br><br><br><br><br>
+         <h1 class="text-center mt-3">History</h1>
+         <p class="text-center mt-3">
            <?php echo base64_decode($history[0]['description'])?>
          </p>
        </div>
      </div>
-     <br>
      <div class="row">
-       <div class="col-lg-12">
-         <h1 class="text-center">Mission</h1>
-         <p class="text-center">
+       <div class="col-lg-12" style='color:#fff;min-height:50pc;background:linear-gradient(rgb(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://sa1s3optim.patientpop.com/assets/production/practices/1a1b5cec0dbf9085272a5dd635b8b00a9b5783be/images/1893381.jpg");background-position: center;background-repeat: no-repeat;background-size: cover;'>
+         <br><br><br><br><br><br>
+         <h1 class="text-center mt-3">Mission</h1>
+         <p class="text-center mt-3">
            <?php echo base64_decode($mission[0]['description'])?>
          </p>
        </div>
      </div>
-     <br>
+
      <div class="row">
-       <div class="col-lg-12">
-         <h1 class="text-center">Vision</h1>
-         <p class="text-center">
+       <div class="col-lg-12" style='color:#fff;min-height:50pc;background:linear-gradient(rgb(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://images.pexels.com/photos/52527/dentist-pain-borowac-cure-52527.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");background-position: center;background-repeat: no-repeat;background-size: cover;'>
+         <br><br><br><br><br><br>
+         <h1 class="text-center mt-3">Vision</h1>
+         <p class="text-center mt-3">
            <?php echo base64_decode($vision[0]['description'])?>
          </p>
        </div>
      </div>
    </div>
-  <br><br><br><br><br><br>
   <script src='./admin/js/swiper.js'></script>
   <script src='./admin/js/home.js'></script>
   <script src="https://kit.fontawesome.com/0c5646b481.js" crossorigin="anonymous"></script>

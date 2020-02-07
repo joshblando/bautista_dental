@@ -80,7 +80,7 @@ require_once "./config/control.php";
         $categoryId = $category['serviceId'];
         // $photo = $category['photo'];
         $description = $category['description'];
-        // $name = $category['name'];
+        $name = $category['name'];
 
         ?>
 
@@ -88,6 +88,7 @@ require_once "./config/control.php";
           <div class="card" style="height:400px;">
             <img class="card-img-top" src="https://images.pexels.com/photos/52527/dentist-pain-borowac-cure-52527.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Card image cap">
             <div class="card-body">
+              <h5 class="card-title"><?php echo $name; ?></h5>
               <p class="card-text"><?php echo $description; ?></p>
             </div>
           </div>

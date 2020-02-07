@@ -30,20 +30,20 @@ require_once "./config/control.php";
   .app__header{
     margin-top:30%;
     color: #fff;
-    margin-bottom: 10%;   
+    margin-bottom: 10%;
   }
   body{
     overflow-x: hidden;
     width: 100%;
     height: 100%;
-    /*background-image: url("https://images.pexels.com/photos/908602/pexels-photo-908602.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");*/
-    background-image: url('logo/back.jpg');
+    background-image: url("https://images.pexels.com/photos/908602/pexels-photo-908602.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    /* background-image: url('logo/back.jpg'); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
   }
   .appointment__cont{
-    background-color: rgba(0, 0, 0, .3); 
+    background-color: rgba(0, 0, 0, .3);
     min-height: 595px !important;
   }
   #datepicker{
@@ -119,8 +119,8 @@ require_once "./config/control.php";
     <div class="row">
       <div class="col-lg-8 mt-4">
         <div class="container">
-            <div id="datepicker"></div>       
-        </div>     
+            <div id="datepicker"></div>
+        </div>
       </div>
       <div class="col-lg-4 appointment__cont">
         <div class="container">
@@ -144,7 +144,7 @@ require_once "./config/control.php";
               }
               ?>
             </select>
-          </div> 
+          </div>
         </div>
         <div class="col-lg-12">
           <div class="form-group">

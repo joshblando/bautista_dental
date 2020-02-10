@@ -29,3 +29,5 @@ function notification($notifiable, $details, $redirect_url, $connect){
     $newNotification->execute($notif_result);
 
 }
+
+$specialization = ['General Dentist','Orthodontist','Oral and Maxillofacial Surgeon','Periodontist','Prosthodontist','Oral Pathology','Oral radiology','Pediatric Dentistry'];

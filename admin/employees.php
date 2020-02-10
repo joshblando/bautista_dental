@@ -28,6 +28,7 @@ include 'nav.php'
                 $photo = $employee['photo'];
                 $name = $employee['title'] . " " . $employee['firstName'] . " " . $employee['lastName'];
                 $role = $employee['role'];
+                $spec = $specialization[$employee['specialization']];
 
             ?>
                 <tr>
@@ -35,8 +36,9 @@ include 'nav.php'
                     <td><?php echo $photo ?></td>
                     <td><?php echo $name ?></td>
                     <td><?php echo $role ?></td>
+                    <td><?php echo $spec ?></td>
                     <td>
-                        <button class="btn btn-success btn-sm btn-edit-employee" data-id="<?php  echo  $employee['employeeId'] ?>" data-email="<?php echo  $employee['email'] ?>" data-contact="<?php echo  $employee['contact'] ?>" data-lastname="<?php echo  $employee['lastName'] ?>" data-firstname="<?php echo  $employee['firstName'] ?>" data-title="<?php echo  $employee['title'] ?>" data-role="<?php echo  $employee['role'] ?>"  data-toggle="modal" data-target="#editEmployeeModal"><span class="icon"><i class="fas fa-edit view"></i></span></button>
+                        <button class="btn btn-success btn-sm btn-edit-employee" data-spec="<?php echo $employee['specialization'] ?>" data-id="<?php  echo  $employee['employeeId'] ?>" data-email="<?php echo  $employee['email'] ?>" data-contact="<?php echo  $employee['contact'] ?>" data-lastname="<?php echo  $employee['lastName'] ?>" data-firstname="<?php echo  $employee['firstName'] ?>" data-title="<?php echo  $employee['title'] ?>" data-role="<?php echo  $employee['role'] ?>"  data-toggle="modal" data-target="#editEmployeeModal"><span class="icon"><i class="fas fa-edit view"></i></span></button>
                     </td>
                 </tr>
             <?php
@@ -59,8 +61,9 @@ include 'nav.php'
             $('#edi_employee_lastName').val($(this).data('lastname'));
             $('#edi_title').val($(this).data('title'));
             $('#edi_role').val($(this).data('role'));
-            $('#edi_employee_contact').val($(this).data('contact'));
             $('#edi_employee_email').val($(this).data('email'));
+            $('#edi_employee_contact').val($(this).data('contact'));
+            $('#edi_employee_spec').val($(this).data('spec'));
           });
             // dataTable
             $('#table_id').DataTable({

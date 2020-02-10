@@ -104,7 +104,7 @@ $(document).ready(function() {
   //     }
   //   });
     $('#datepicker').css('display', 'block');
-   
+
    var calendarEl = document.getElementById('datepicker');
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -129,7 +129,7 @@ $(document).ready(function() {
               },
               dataType: "JSON",
               success: response => {
-                
+
                 $(".time-container").addClass("show");
                 $("#times").empty();
                 if (response.length === 0) {
@@ -168,7 +168,8 @@ $(document).ready(function() {
         $('#eventInfo').html(info.event.extendedProps.sample);
         $('#eventDate').html(info.event.extendedProps.sched+' '+info.event.extendedProps.time);
         $('#eventTitle').html(info.event.title);
-        console.log(info.event.backgroundColor);
+        $('#preDiagnostic').attr('src', '../images/'+info.event.extendedProps.image);
+        console.log('../images/'+info.event.extendedProps.image);
         $('span.badge.appointment_status').attr('style','background:'+info.event.backgroundColor+' !important; color:white !important;');
         $('span.badge.appointment_status').html(info.event.extendedProps.status);
 
@@ -193,7 +194,7 @@ $(document).ready(function() {
     calendar.render();
   });
 
- 
+
 
   $(document).on("click", "#times .timeSlot", function(e) {
     checkTime = $(this).text();
@@ -246,7 +247,8 @@ $(document).ready(function() {
           timeAppoint: timeAppoint,
           appointTimeLength: appointTimeLength,
           message: message,
-          appointSubmit: appointSubmit
+          appointSubmit: appointSubmit,
+
         },
         success: result => {
           alert(result);

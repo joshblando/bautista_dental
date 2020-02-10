@@ -18,7 +18,7 @@
     <!-- </section> -->
   </div>
   <div class="container-fluid">
-    
+
     <div  class="row mt-4 gallery-container">
        <?php
               require_once "../../config/control.php";
@@ -28,13 +28,13 @@
               $banners = $getBanners->fetchAll();
 
               foreach ($banners as $banner) {
-                 
+
                   $img = '../../images/'.$banner['image'];
-                
+
 
               ?>
-                  <div class="col-lg-3" style="padding:0;margin:0;min-height:30px;object-fit:contain;"><img height="100%" class="img img-fluid thumbnail" src="<?php echo $img; ?>"></div>
-                  
+                  <div class="col-lg-3" style="padding:0;margin:0;max-height:700px;object-fit:contain;"><img height="100%" class="img img-fluid thumbnail" style="max-width: 100%;height: 700px;object-fit: cover;" src="<?php echo $img; ?>"></div>
+
         <?php
         }
         ?>
@@ -52,5 +52,4 @@
 
 <?php
   include './footer.php';
-?>   
-        
+?>

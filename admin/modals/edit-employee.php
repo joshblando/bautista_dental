@@ -63,6 +63,22 @@
             </div>
             <div class="col-lg-12">
                 <div class="form-group">
+                  <label for="">Specialization</label>
+                  <select name="specialization" id="edi_employee_spec" class="form-control">
+                      <option disabled selected>Specialization</option>
+                      <option value="0">General Dentist</option>
+                      <option value="1">Orthodontist</option>
+                      <option value="2">Oral and Maxillofacial Surgeon</option>
+                      <option value="3">Periodontist</option>
+                      <option value="4">Prosthodontist</option>
+                      <option value="5">Oral Pathology</option>
+                      <option value="6">Oral radiology</option>
+                      <option value="7">Pediatric Dentistry</option>
+                  </select>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="form-group">
                   <label for="">Role</label>
                   <select name="role" id="edi_role" class="form-control">
                       <option disabled selected>Role</option>

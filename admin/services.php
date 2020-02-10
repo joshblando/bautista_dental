@@ -1,6 +1,15 @@
 <?php
 include 'nav.php'
 ?>
+<style>
+.categ::first-letter {
+  text-transform: uppercase;
+
+}
+.categ{
+  text-transform: lowercase;
+}
+</style>
 
     <button class="btn btn-primary float-right" id="addServiceModal" data-toggle="modal" data-target="#addServiceModal"><i class="fas fa-plus"></i>&nbsp;Add new category</button>
     <br><br>
@@ -10,6 +19,7 @@ include 'nav.php'
                 <th>ID</th>
                 <th>Image</th>
                 <th>Name</th>
+                <th>Category</th>
                 <th>Description</th>
                 <th>Action</th>
             </tr>
@@ -26,6 +36,7 @@ include 'nav.php'
                 $categoryId = $category['serviceId'];
                 $photo = $category['photo'];
                 $name = $category['name'];
+                $categoryId = $category['categoryId'];
                 $description = $category['description'];
 
             ?>
@@ -33,6 +44,7 @@ include 'nav.php'
                     <td><?php echo $categoryId ?></td>
                     <td><?php echo $photo ?></td>
                     <td><?php echo $name ?></td>
+                    <td class="categ"><?php echo $categoryId ?></td>
                     <td><?php echo $description ?></td>
                     <td>
                        <button class="btn btn-success btn-sm btn-edit-service" data-id="<?php echo $categoryId ?>" data-name="<?php echo $name ?>" data-desc="<?php echo $description ?>" data-toggle="modal" data-target="#editServiceModal"><span class="icon"><i class="fas fa-edit view"></i></span></button>

@@ -25,6 +25,7 @@
         'status' => $value['status'],
         'sched' => $value['date'],
         'time' => $value['start'],
+        'image' => $value['preDiagnostic']
 
 
       ];

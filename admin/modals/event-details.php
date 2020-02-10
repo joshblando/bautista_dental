@@ -9,7 +9,7 @@
         <div class="row">
           <div class="col-lg-12">
 
-            <img class="img rounded img-fluid" src="https://cdn.pixabay.com/photo/2016/11/28/12/22/dentist-1864921_960_720.jpg">
+            <img class="img rounded img-fluid" id="preDiagnostic" src="https://cdn.pixabay.com/photo/2016/11/28/12/22/dentist-1864921_960_720.jpg">
           </div>
         </div>
         <br>

@@ -23,6 +23,7 @@ require_once "./config/control.php";
   <link href='assets/calendar/packages/timegrid/main.css' rel='stylesheet' />
   <link href='assets/calendar/packages/list/main.css' rel='stylesheet' />
   <link rel="stylesheet" type="text/css" href="./admin/style/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="admin/style/dropzone.css">
 
   <title>Bautista Dental Center</title>
 </head>
@@ -82,6 +83,10 @@ require_once "./config/control.php";
             <div class="col-lg-12">
               <input type="hidden" name="serviceHidden" id="inputServiceHidden" />
               <input type="hidden" name="empHidden" id="inputEmployeeHidden" />
+            <div class="form-group">
+              <label>Pre Diagnostics</label>
+              <input class="form-control" type="file" name="pre_diagnostics" id="pre_diagnostics" />
+            </div>  
             <div class="form-group">
               <input class="form-control" type="text" name="service" id="inputService" readonly="readonly" />
             </div>
@@ -186,12 +191,79 @@ require_once "./config/control.php";
   <script src='assets/calendar/packages/timegrid/main.js'></script>
   <script src='assets/calendar/packages/list/main.js'></script>
   <script src="admin/js/fontawesome.js"></script>
-
+  <script src="admin/js/dropzone.js"></script>
   <script src="js/moment.min.js"></script>
   <script src="js/nav.js"></script>
   <script src="js/appointment.js"></script>
   <script src="admin/js/bootstrap.min.js"></script>
+  <script>
+  var dropzone = new Dropzone('#demo-upload', {
+    // previewTemplate: document.querySelector('#preview-template').innerHTML,
+    parallelUploads: 2,
+    thumbnailHeight: 120,
+    thumbnailWidth: 120,
+    maxFilesize: 6,
+    filesizeBase: 1000,
+    success:function(file, status){
 
+        $('.swiper-wrapper').append('<div class="swiper-slide"><img class="img img-fluid" src="../../images/'+file.name+'"></div>');
+
+    },
+    thumbnail: function(file, dataUrl) {
+      if (file.previewElement) {
+        file.previewElement.classList.remove("dz-file-preview");
+        var images = file.previewElement.querySelectorAll("[data-dz-thumbnail]");
+        for (var i = 0; i < images.length; i++) {
+          var thumbnailElement = images[i];
+          thumbnailElement.alt = file.name;
+          thumbnailElement.src = dataUrl;
+        }
+        setTimeout(function() { file.previewElement.classList.add("dz-image-preview"); }, 1);
+      }
+    },
+
+
+  });
+
+
+  var minSteps = 6,
+      maxSteps = 60,
+      timeBetweenSteps = 100,
+      bytesPerStep = 100000;
+
+  dropzone.uploadFiles = function(files) {
+    var self = this;
+
+    for (var i = 0; i < files.length; i++) {
+
+      var file = files[i];
+      totalSteps = Math.round(Math.min(maxSteps, Math.max(minSteps, file.size / bytesPerStep)));
+
+      for (var step = 0; step < totalSteps; step++) {
+        var duration = timeBetweenSteps * (step + 1);
+        setTimeout(function(file, totalSteps, step) {
+          return function() {
+            file.upload = {
+              progress: 100 * (step + 1) / totalSteps,
+              total: file.size,
+              bytesSent: (step + 1) * file.size / totalSteps
+            };
+
+            self.emit('uploadprogress', file, file.upload.progress, file.upload.bytesSent);
+            if (file.upload.progress == 100) {
+              file.status = Dropzone.SUCCESS;
+              self.emit("success", file, 'success', null);
+              self.emit("complete", file);
+              self.processQueue();
+              //document.getElementsByClassName("dz-success-mark").style.opacity = "1";
+            }
+          };
+        }(file, totalSteps, step), duration);
+      }
+    }
+  }
+
+  </script>
 
 </body>
 

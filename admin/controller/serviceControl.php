@@ -2,11 +2,10 @@
 require_once "../../config/control.php";
 session_start();
 if (isset($_POST["addService"])) {
-    $categoryId = $_GET['categoryId'];
+    $categoryId = $_POST['category'];
     $name = $_POST['name'];
     $duration = $_POST['duration'];
     $description = $_POST['description'];
-
     if (empty($name)) {
         echo "<script>alert('Name is empty');window.location.replace('../services.php')</script>";
     } else if (empty($duration)) {

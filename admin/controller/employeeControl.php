@@ -8,6 +8,7 @@ if (isset($_POST["addEmployee"])) {
     $contact = $_POST['contact'];
     $email = $_POST['email'];
     $role = $_POST['role'];
+    $spec = $_POST['specialization'];
 
 
     if (empty($title)) {
@@ -36,12 +37,13 @@ if (isset($_POST["addEmployee"])) {
             "lastName" => $lastName,
             "contact" => $contact,
             "email" => $email,
-            "role" => $role
+            "role" => $role,
+            "specialization" => $spec
 
         ];
 
-        $addAdmin = $connect->prepare("INSERT INTO employee (employeeId, title, firstName, lastName, contact, email, role)
-                            values (:employeeId, :title ,:firstName, :lastName, :contact, :email,:role)");
+        $addAdmin = $connect->prepare("INSERT INTO employee (employeeId, title, firstName, lastName, contact, email, role, specialization)
+                            values (:employeeId, :title ,:firstName, :lastName, :contact, :email,:role,:specialization)");
         $addAdmin->execute($data);
 
         echo "<script>alert('Added successfully'); window.location.replace('../employees.php')</script>";

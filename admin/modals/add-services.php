@@ -27,6 +27,18 @@
                   <input type="text" class="form-control" name="name" id="service_name" autocomplete="off">
                 </div>
             </div>
+
+            <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="">Category</label>
+                  <select class="form-control" name="category">
+                    <option disabled selected>Category</option>
+                    <option value="MAJOR">Major</option>
+                    <option value="MINOR">Minor</option>
+                  </select>
+                </div>
+            </div>
+
             <div class="col-lg-12">
                 <div class="form-group">
                   <label for="">Description</label>

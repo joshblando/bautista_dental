@@ -8,7 +8,7 @@ if (isset($_POST["addEmployee"])) {
     $contact = $_POST['contact'];
     $email = $_POST['email'];
     $role = $_POST['role'];
-    $spec = $_POST['specialization'];
+    $spec = implode(',', $_POST['specialization']);
 
 
     if (empty($title)) {

@@ -2,7 +2,11 @@
 <?php
 include 'nav.php'
 ?>
-
+<style>
+  .spec:not(:empty):not(:last-child):after {
+    content: ", ";
+  }
+</style>
     <button class="btn btn-primary float-right" data-toggle="modal" data-target="#addEmployeeModal"><i class="fas fa-plus"></i>&nbsp;Add new employee</button>
     <br><br>
     <table class="display dt-responsive nowrap table table-striped" id="table_id" data-plugin="dataTable">
@@ -12,6 +16,7 @@ include 'nav.php'
                 <th>Image</th>
                 <th>Name</th>
                 <th>Role</th>
+                <th>Specialization</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -28,15 +33,20 @@ include 'nav.php'
                 $photo = $employee['photo'];
                 $name = $employee['title'] . " " . $employee['firstName'] . " " . $employee['lastName'];
                 $role = $employee['role'];
-                $spec = $specialization[$employee['specialization']];
-
+                $spec = $employee['specialization'];
+                // var_dump($spec);
             ?>
                 <tr>
                     <td><?php echo $employeeId ?></td>
                     <td><?php echo $photo ?></td>
                     <td><?php echo $name ?></td>
                     <td><?php echo $role ?></td>
-                    <td><?php echo $spec ?></td>
+                    <td><?php
+                        $try = explode(',', $spec);
+                        for ($i=0; $i < count($try); $i++) {
+                          echo '<span class="spec">'.$specialization[$try[$i]].'</span>';
+                        }
+                     ?></td>
                     <td>
                         <button class="btn btn-success btn-sm btn-edit-employee" data-spec="<?php echo $employee['specialization'] ?>" data-id="<?php  echo  $employee['employeeId'] ?>" data-email="<?php echo  $employee['email'] ?>" data-contact="<?php echo  $employee['contact'] ?>" data-lastname="<?php echo  $employee['lastName'] ?>" data-firstname="<?php echo  $employee['firstName'] ?>" data-title="<?php echo  $employee['title'] ?>" data-role="<?php echo  $employee['role'] ?>"  data-toggle="modal" data-target="#editEmployeeModal"><span class="icon"><i class="fas fa-edit view"></i></span></button>
                     </td>
@@ -56,6 +66,7 @@ include 'nav.php'
 
         $(document).ready(function() {
           $('button.btn-edit-employee').click(function(){
+            $('.uncheck').attr('checked', false);
             $('#edi_employee_firstName').val($(this).data('firstname'));
             $('#edi_employeeId').val($(this).data('id'));
             $('#edi_employee_lastName').val($(this).data('lastname'));
@@ -63,7 +74,15 @@ include 'nav.php'
             $('#edi_role').val($(this).data('role'));
             $('#edi_employee_email').val($(this).data('email'));
             $('#edi_employee_contact').val($(this).data('contact'));
-            $('#edi_employee_spec').val($(this).data('spec'));
+            if ($(this).data('spec').length > 1) {
+              var array = $(this).data('spec').split(',');
+              $.each(array, function(k, v){
+                $('#edi_employee_spec_'+v).attr('checked', true);
+              });
+            }
+            else{
+              $('#edi_employee_spec_'+$(this).data('spec')).attr('checked', true);
+            }
           });
             // dataTable
             $('#table_id').DataTable({

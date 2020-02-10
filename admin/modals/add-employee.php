@@ -62,20 +62,21 @@
                 </div>
             </div>
             <div class="col-lg-12">
-                <div class="form-group">
-                  <label for="">Specialization</label>
-                  <select name="specialization" id="Specialization" class="form-control">
-                      <option disabled selected>Specialization</option>
-                      <option value="0">General Dentist</option>
-                      <option value="1">Orthodontist</option>
-                      <option value="2">Oral and Maxillofacial Surgeon</option>
-                      <option value="3">Periodontist</option>
-                      <option value="4">Prosthodontist</option>
-                      <option value="5">Oral Pathology</option>
-                      <option value="6">Oral radiology</option>
-                      <option value="7">Pediatric Dentistry</option>
-                  </select>
-                </div>
+                <h6>Specialization</h6>
+                <br>
+                <?php
+                $array_spec = ['General Dentist','Orthodontist','Oral and Maxillofacial Surgeon','Periodontist','Prosthodontist','Oral Pathology','Oral radiology','Pediatric Dentistry'];
+                for ($i=0; $i < count($array_spec) ; $i++) {
+                  ?>
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <input type="checkbox" name="specialization[]" value="<?php echo $i ?>">
+                      &nbsp;&nbsp;<label for=""><?php echo $array_spec[$i] ?></label>
+                    </div>
+                  </div>
+                  <?php
+                }
+                ?>
             </div>
             <div class="col-lg-12">
                 <div class="form-group">

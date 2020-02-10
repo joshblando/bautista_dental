@@ -1,3 +1,8 @@
+$(document).ready(function(){
+  var dropzone = new Dropzone("#dropzone", {
+    url: "/file/post",
+  });
+});
 $(document).ready(function() {
 
   function highlightDays(dateHigh) {
@@ -212,24 +217,23 @@ $(document).ready(function() {
 
   $("#formSubmit").on("submit", function(e) {
     e.preventDefault();
-
-    const employeeAppoint = $("#inputEmployeeHidden").val();
-    const serviceAppoint = $("#inputServiceHidden").val();
-    const dateAppoint = $("#inputDate").val();
-    const timeAppoint = $("#inputTime").val();
-    const appointSubmit = $("#appointSubmit").val();
-    const message = $("#message").val();
-
-    const serviceId = serviceAppoint.split("|")[0];
-    const serviceDuration = serviceAppoint.split("|")[1];
-
-    const appointTimeLength = timelineLabels(timeAppoint, serviceDuration);
-
+    var dataform = new FormData();
+    dataform.append('employeeAppoint', $("#inputEmployeeHidden").val());
+    dataform.append('serviceAppoint' , $("#inputServiceHidden").val());
+    dataform.append('dateAppoint' , $("#inputDate").val());
+    dataform.append('timeAppoint' , $("#inputTime").val());
+    dataform.append('appointSubmit' , $("#appointSubmit").val());
+    dataform.append('message' , $("#message").val());
+    dataform.append('ap' , $("#ap_id").val());
+    dataform.append('serviceId' , $("#inputServiceHidden").val().split("|")[0]);
+    dataform.append('serviceDuration' , $("#inputServiceHidden").val().split("|")[1]);
+    dataform.append('image' , $("#pre_diagnostics")[0].files[0]);
+    dataform.append('appointTimeLength', timelineLabels($("#inputTime").val(), $("#inputServiceHidden").val().split("|")[1]));
     if (
-      employeeAppoint === "" ||
-      serviceAppoint === "" ||
-      dateAppoint === "" ||
-      timeAppoint === ""
+      $("#inputEmployeeHidden").val() === "" ||
+      $("#inputServiceHidden").val() === "" ||
+      $("#inputDate").val() === "" ||
+      $("#inputTime").val() === ""
     ) {
       alert("ERROR: Please Check your inputs");
       $("#appointmentModal").removeClass("show-modal");
@@ -239,17 +243,9 @@ $(document).ready(function() {
       $.ajax({
         url: "./api/appointment.php",
         type: "POST",
-        data: {
-          employeeAppoint: employeeAppoint,
-          serviceId: serviceId,
-          serviceDuration: serviceDuration,
-          dateAppoint: dateAppoint,
-          timeAppoint: timeAppoint,
-          appointTimeLength: appointTimeLength,
-          message: message,
-          appointSubmit: appointSubmit,
-
-        },
+        data: dataform,
+        contentType : false,
+        processType : false,
         success: result => {
           alert(result);
           window.location.replace("appointment.php");

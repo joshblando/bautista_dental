@@ -17,6 +17,8 @@ if (isset($_POST['appointSubmit'])) {
     $appointTime = implode(",", $appointTimeLength);
     $status = "PENDING";
     $cancel = "CANCEL";
+    $generatedID = $_POST['ap'];
+
 
     $service_end = strtotime($start) + 60*(60*$duration);
     $end = date('h:i a', $service_end);
@@ -36,9 +38,6 @@ if (isset($_POST['appointSubmit'])) {
     } else {
 
         // INSERT TO APPOINTMENT
-        $str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $shuffled = str_shuffle($str);
-        $generatedID = substr($shuffled, 0, 8);
 
         $appointment_result = [
             "appointmentId" => $generatedID,
@@ -96,9 +95,9 @@ function getNotifiable($appointmentId, $connect){
         $notifications->execute(["appointmentId" => $appointmentId]);
         $notify = $notifications->fetchAll();
 
-        $user = 'ADMIN'; 
-        $fullname_dentist = $notify[0]['title'].' '.$notify[0]['firstName'].' '.$notify[0]['lastName'] ; 
-        $fullname_user = $notify[0]['fname'].' '.$notify[0]['lname'] ; 
+        $user = 'ADMIN';
+        $fullname_dentist = $notify[0]['title'].' '.$notify[0]['firstName'].' '.$notify[0]['lastName'] ;
+        $fullname_user = $notify[0]['fname'].' '.$notify[0]['lname'] ;
 
         $message = $fullname_user.' set an appointment to '. $fullname_dentist;
 

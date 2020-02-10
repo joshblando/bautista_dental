@@ -25,9 +25,13 @@
         $('#eventInfo').html(info.event.extendedProps.sample);
         $('#eventDate').html(info.event.extendedProps.sched+' '+info.event.extendedProps.time);
         $('#eventTitle').html(info.event.title);
-        console.log(info.event.backgroundColor);
         $('span.badge.appointment_status').attr('style','background:'+info.event.backgroundColor+' !important; color:white !important;');
         $('span.badge.appointment_status').html(info.event.extendedProps.status);
+        $('#preDiag').attr('src', 'https://cdn.pixabay.com/photo/2016/11/28/12/22/dentist-1864921_960_720.jpg');          
+
+        if (info.event.extendedProps.image) {
+          $('#preDiag').attr('src', '../images/'+info.event.extendedProps.image);
+        }
 
 
         if(info.event.extendedProps.status == 'APPROVED') {

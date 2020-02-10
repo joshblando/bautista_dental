@@ -22,14 +22,14 @@
               <input class="form-control" placeholder="Mobile No." type="mobile" name="mobile" id="mobile" />
             </div>
             <div class="form-group text-area">
-              <textarea class="form-control" placeholder="Write a message ......." name="message" id="message" cols="30" rows="10"></textarea>
+              <textarea class="form-control" placeholder="Write a message ......." name="message" id="messages" cols="30" rows="10"></textarea>
             </div>
             </div>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" name="inquirybtn" id="appointSubmit">Save</button>
+          <button type="submit" class="btn btn-primary" name="inquirybtn" id="inquirySubmit">Save</button>
         </div>
       </form>
     </div>

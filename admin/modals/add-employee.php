@@ -40,26 +40,43 @@
             <div class="col-lg-12">
                 <div class="form-group">
                   <label for="">Firstname</label>
-                  <input type="text" class="form-control" name="firstName" id="firstName" autocomplete="off">
+                  <input type="text" class="form-control" name="firstName" id="employee_firstName" autocomplete="off">
                 </div>
             </div>
             <div class="col-lg-12">
                 <div class="form-group">
                   <label for="">Lastname</label>
-                  <input type="text" class="form-control" name="lastName" id="lastName" autocomplete="off">
+                  <input type="text" class="form-control" name="lastName" id="employee_lastName" autocomplete="off">
                 </div>
             </div>
             <div class="col-lg-12">
                 <div class="form-group">
                   <label for="">Contact</label>
-                  <input class="form-control" type="text" name="contact" id="contact" autocomplete="off">
+                  <input class="form-control" type="text" name="contact" id="employee_contact" autocomplete="off">
                 </div>
             </div>
             <div class="col-lg-12">
                 <div class="form-group">
                   <label for="">Email</label>
-                  <input class="form-control" type="email" name="email" id="email" autocomplete="off">
+                  <input class="form-control" type="email" name="email" id="employee_email" autocomplete="off">
                 </div>
+            </div>
+            <div class="col-lg-12">
+                <h6>Specialization</h6>
+                <br>
+                <?php
+                $array_spec = ['General Dentist','Orthodontist','Oral and Maxillofacial Surgeon','Periodontist','Prosthodontist','Oral Pathology','Oral radiology','Pediatric Dentistry'];
+                for ($i=0; $i < count($array_spec) ; $i++) {
+                  ?>
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <input type="checkbox" name="specialization[]" value="<?php echo $i ?>">
+                      &nbsp;&nbsp;<label for=""><?php echo $array_spec[$i] ?></label>
+                    </div>
+                  </div>
+                  <?php
+                }
+                ?>
             </div>
             <div class="col-lg-12">
                 <div class="form-group">

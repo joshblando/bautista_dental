@@ -2,7 +2,11 @@
 <?php
 include 'nav.php'
 ?>
-
+<style>
+  .spec:not(:empty):not(:last-child):after {
+    content: ", ";
+  }
+</style>
     <button class="btn btn-primary float-right" data-toggle="modal" data-target="#addEmployeeModal"><i class="fas fa-plus"></i>&nbsp;Add new employee</button>
     <br><br>
     <table class="display dt-responsive nowrap table table-striped" id="table_id" data-plugin="dataTable">
@@ -12,6 +16,7 @@ include 'nav.php'
                 <th>Image</th>
                 <th>Name</th>
                 <th>Role</th>
+                <th>Specialization</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -28,15 +33,22 @@ include 'nav.php'
                 $photo = $employee['photo'];
                 $name = $employee['title'] . " " . $employee['firstName'] . " " . $employee['lastName'];
                 $role = $employee['role'];
-
+                $spec = $employee['specialization'];
+                // var_dump($spec);
             ?>
                 <tr>
                     <td><?php echo $employeeId ?></td>
                     <td><?php echo $photo ?></td>
                     <td><?php echo $name ?></td>
                     <td><?php echo $role ?></td>
+                    <td><?php
+                        $try = explode(',', $spec);
+                        for ($i=0; $i < count($try); $i++) {
+                          echo '<span class="spec">'.$specialization[$try[$i]].'</span>';
+                        }
+                     ?></td>
                     <td>
-                        <a href="./employee.php?employeeId=<?php echo $employeeId ?>"><span class="icon"><i class="fas fa-eye view"></i></span></a>
+                        <button class="btn btn-success btn-sm btn-edit-employee" data-spec="<?php echo $employee['specialization'] ?>" data-id="<?php  echo  $employee['employeeId'] ?>" data-email="<?php echo  $employee['email'] ?>" data-contact="<?php echo  $employee['contact'] ?>" data-lastname="<?php echo  $employee['lastName'] ?>" data-firstname="<?php echo  $employee['firstName'] ?>" data-title="<?php echo  $employee['title'] ?>" data-role="<?php echo  $employee['role'] ?>"  data-toggle="modal" data-target="#editEmployeeModal"><span class="icon"><i class="fas fa-edit view"></i></span></button>
                     </td>
                 </tr>
             <?php
@@ -48,10 +60,30 @@ include 'nav.php'
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/0c5646b481.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/zf-6.4.3/dt-1.10.20/r-2.2.3/rg-1.1.1/sc-2.0.1/datatables.min.js"></script>
-    <script src="./js/admin.js"></script>
+    <!-- <script type="text/javascript" src="https://cdn.datatables.net/v/zf-6.4.3/dt-1.10.20/r-2.2.3/rg-1.1.1/sc-2.0.1/datatables.min.js"></script> -->
+    <!-- <script src="./js/admin.js"></script> -->
     <script>
+
         $(document).ready(function() {
+          $('button.btn-edit-employee').click(function(){
+            $('.uncheck').attr('checked', false);
+            $('#edi_employee_firstName').val($(this).data('firstname'));
+            $('#edi_employeeId').val($(this).data('id'));
+            $('#edi_employee_lastName').val($(this).data('lastname'));
+            $('#edi_title').val($(this).data('title'));
+            $('#edi_role').val($(this).data('role'));
+            $('#edi_employee_email').val($(this).data('email'));
+            $('#edi_employee_contact').val($(this).data('contact'));
+            if ($(this).data('spec').length > 1) {
+              var array = $(this).data('spec').split(',');
+              $.each(array, function(k, v){
+                $('#edi_employee_spec_'+v).attr('checked', true);
+              });
+            }
+            else{
+              $('#edi_employee_spec_'+$(this).data('spec')).attr('checked', true);
+            }
+          });
             // dataTable
             $('#table_id').DataTable({
                 responsive: true,
@@ -65,6 +97,8 @@ include 'nav.php'
             });
             // end dataTable
         });
+
+
     </script>
 <?php
 include 'footer.php'

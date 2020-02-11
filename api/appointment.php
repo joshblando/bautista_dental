@@ -17,6 +17,8 @@ if (isset($_POST['appointSubmit'])) {
     $appointTime = implode(",", $appointTimeLength);
     $status = "PENDING";
     $cancel = "CANCEL";
+    $generatedID = $_POST['ap'];
+
 
     $service_end = strtotime($start) + 60*(60*$duration);
     $end = date('h:i a', $service_end);
@@ -36,9 +38,6 @@ if (isset($_POST['appointSubmit'])) {
     } else {
 
         // INSERT TO APPOINTMENT
-        $str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $shuffled = str_shuffle($str);
-        $generatedID = substr($shuffled, 0, 8);
 
         $appointment_result = [
             "appointmentId" => $generatedID,
@@ -80,8 +79,28 @@ if (isset($_POST['appointSubmit'])) {
         //                                     WHERE employeeId=:employeeId && date =:date");
         // $updateSchedule->execute($updateData);
 
+
+        getNotifiable($generatedID, $connect);
+
         echo "SUCCESS";
     }
 } else {
     echo "something went wrong";
+}
+
+function getNotifiable($appointmentId, $connect){
+
+        $sql_notifiable = "SELECT ap.userId, em.firstName, em.lastName, em.title, sr.firstName AS fname, sr.lastName AS lname FROM (appointment as ap LEFT JOIN employee as em ON ap.employeeId = em.employeeId) RIGHT JOIN user as sr ON ap.userId = sr.userId WHERE appointmentId=:appointmentId";
+        $notifications = $connect->prepare($sql_notifiable);
+        $notifications->execute(["appointmentId" => $appointmentId]);
+        $notify = $notifications->fetchAll();
+
+        $user = 'ADMIN';
+        $fullname_dentist = $notify[0]['title'].' '.$notify[0]['firstName'].' '.$notify[0]['lastName'] ;
+        $fullname_user = $notify[0]['fname'].' '.$notify[0]['lname'] ;
+
+        $message = $fullname_user.' set an appointment to '. $fullname_dentist;
+
+
+        notification($user, $message, 'appointment.php', $connect);
 }

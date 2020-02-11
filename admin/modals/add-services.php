@@ -2,7 +2,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add new employee</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add new Service</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -24,13 +24,25 @@
             <div class="col-lg-12">
                 <div class="form-group">
                   <label for="">Name</label>
-                  <input type="text" class="form-control" name="name" id="name" autocomplete="off">
+                  <input type="text" class="form-control" name="name" id="service_name" autocomplete="off">
                 </div>
             </div>
+
+            <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="">Category</label>
+                  <select class="form-control" name="category">
+                    <option disabled selected>Category</option>
+                    <option value="MAJOR">Major</option>
+                    <option value="MINOR">Minor</option>
+                  </select>
+                </div>
+            </div>
+
             <div class="col-lg-12">
                 <div class="form-group">
                   <label for="">Description</label>
-                  <textarea class="form-control" name="description" id="description" cols="10" rows="10"></textarea>
+                  <textarea class="form-control" name="description" id="service_description" cols="10" rows="10"></textarea>
                 </div>
             </div>
           </div>

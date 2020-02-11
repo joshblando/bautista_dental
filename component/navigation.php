@@ -1,85 +1,85 @@
-<nav class="navigation">
-    <div class="brand">
-        <img src="./logo/tooth.png" alt="" />
-    </div>
-    <div class="menu_navigation">
-        <ul class="nav-top">
-            <?php
+<?php include_once 'modal/inquiry-modal.php'; ?>
+<link rel="stylesheet" type="text/css" href="./style/nav.css">
+<link rel="stylesheet" type="text/css" href="./admin/style/notif.css">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand mr-4" href="#">
+    <img src="./logo/tooth.png" width="100" height="100" alt="">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse navbar-right" id="navbarNavDropdown">
+    <ul class="navbar-nav navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item" style="margin-left: auto;">
+        <a class="nav-link" href="index.php">Home</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="about.php">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Services</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="gallery.php">Gallery</a>
+      </li>
+      <li class="nav-item">
+        <span class="nav-link" data-toggle="modal" data-target="#inquiryModal">Inquiry</span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link btn btn-primary mk__appointment" href="appointment.php">Make Appointment</a>
+      </li>
+    </ul>
+    <div class="form-inline my-2 my-lg-0">
+      <ul class="navbar-nav">
+        <?php
 
-            if (!isset($_SESSION['userId'])) {
-            ?>
-                <li class="nav-top_item"><a href="login.php">Login</a></li>
-                <li class="nav-top_item"><a href="register.php">Register</a></li>
-
-            <?php } else {
-                $userId = $_SESSION['userId'];
-                $userAvatar = $connect->prepare("SELECT email, photo FROM user WHERE userId = :userId");
-                $userAvatar->execute(["userId" => $userId]);
-                $userAvatarRow = $userAvatar->fetch(PDO::FETCH_ASSOC);
-                $photo = $userAvatarRow['photo'];
-                $email = $userAvatarRow['email'];
-
-            ?>
-
-                <div class='nav-top_avatar'>
-                    <img src=<?php echo $photo ? "$photo" : "https://images.pexels.com/photos/736842/pexels-photo-736842.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" ?> alt="">
-                    <span id="showTopMenu"><?php echo $email ?><i class="fas fa-caret-down"></i></span>
-
-                    <div class="nav-top_menu" id="navTopMenu">
-                        <ul class="top-menu_list">
-                            <li class="top-menu_items"><i class="fas fa-user-cog">&nbsp;</i><a href="userAccount.php">My&nbsp;Account</a></li>
-                            <li class="top-menu_items"><i class="fas fa-sign-out-alt">&nbsp;</i><a href="?logout">Log out</a></li>
-                        </ul>
-                    </div>
-                </div>
-            <?php
-            }
-            ?>
-
-        </ul>
-        <hr />
-        <ul class="nav-list">
-            <li class="nav-list_item "><a class="current" href="index.php">Home</a></li>
-            <li class="nav-list_item"><a href="#">About</a></li>
-            <li class="nav-list_item"><a href="#">Services</a></li>
-            <li class="nav-list_item"><a href="#">Gallery</a></li>
-            <li class="appoint-block">
-                <a href="?appoint">Make&nbsp;Appointment</a>
+        if (!isset($_SESSION['userId'])) {
+        ?>
+            <li class="nav-item">
+              <a class="nav-link" href="login.php">Login</a>
             </li>
-        </ul>
+            <li class="nav-item">
+              <a class="nav-link" href="register.php">Register</a>
+            </li>
 
+        <?php } else {
+            $userId = $_SESSION['userId'];
+            $userAvatar = $connect->prepare("SELECT email, photo FROM user WHERE userId = :userId");
+            $userAvatar->execute(["userId" => $userId]);
+            $userAvatarRow = $userAvatar->fetch(PDO::FETCH_ASSOC);
+            $photo = $userAvatarRow['photo'];
+            $email = $userAvatarRow['email'];
+
+        ?>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="img circle" width="30" height="30" src=<?php echo $photo ? "$photo" : "https://images.pexels.com/photos/736842/pexels-photo-736842.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" ?> alt="">
+            <span id="showTopMenu"><?php echo $email ?></span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="userAccount.php">My Account</a>
+            <a class="dropdown-item" href="?logout">Logout</a>
+            <!-- <a class="dropdown-item" href="#">Something else here</a> -->
+          </div>
+        </li>
+
+       <li class="nav-item dropdown pl-2 pr-2">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-bell"></i>
+          <span class="badge badge-danger notif_count"></span>
+        </a>
+        <div class="dropdown-menu message__container" style="left:-463px !important;" aria-labelledby="navbarDropdownMenuLink2">
+            <a class="dropdown-item" href="userAccount.ph">this is a sample message</a>
+        </div>
+      </li>
+      <?php
+        }
+      ?>
+      </ul>
     </div>
-
-
+  </div>
 </nav>
-
-<?php
-if (isset($_GET['appoint'])) {
-    if (!isset($_SESSION['id'])) {
-        echo "<script>alert('Please sign in to continue to set an appointment. Thank you!'); window.location ='login.php'</script>";
-    } else {
-        echo "<script>window.location = 'appointment.php'</script>";
-    }
-}
-
-if (isset($_GET['logout'])) {
-
-    $_SESSION = array();
-    if (ini_get("session.use_cookies")) {
-        $params = session_get_cookie_params();
-        setcookie(
-            session_name(),
-            '',
-            time() - 42000,
-            $params["path"],
-            $params["domain"],
-            $params["secure"],
-            $params["httponly"]
-        );
-    }
-
-    session_destroy();
-
-    echo "<script>window.location.replace('index.php')</script>";
-}
-?>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/jquery-ui.min.js"></script>
+<script src = "./js/notification.js"></script>
+<script src="https://kit.fontawesome.com/0c5646b481.js" crossorigin="anonymous"></script>

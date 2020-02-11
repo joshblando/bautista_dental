@@ -14,8 +14,10 @@ $userId = $_SESSION['userId'];
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/fh-3.1.6/r-2.2.3/rg-1.1.1/datatables.min.css" />
     <link rel="stylesheet" href="./style/nav.css" />
-    <link rel="stylesheet" href="./style/general.css" />
+    <!-- <link rel="stylesheet" href="./style/general.css" /> -->
     <link rel="stylesheet" href="./style/user.css" />
+  <link rel="stylesheet" type="text/css" href="./admin/style/bootstrap.min.css">
+
     <title>Document</title>
 </head>
 
@@ -141,6 +143,8 @@ $userId = $_SESSION['userId'];
     <script src="https://kit.fontawesome.com/0c5646b481.js"></script>
     <script src="./js/nav.js"></script>
     <script src="./js/user.js"></script>
+  <script src="admin/js/bootstrap.min.js"></script>
+    
 </body>
 
 </html>

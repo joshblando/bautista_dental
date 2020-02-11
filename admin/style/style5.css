@@ -222,3 +222,48 @@ a.article, a.article:hover {
     }
 
 }
+
+ #sidebar ul li a {
+    padding: 16px !important;
+    font-size: 15px !important;
+}
+body{
+    font-size: 14px;
+}
+.navbar{
+    padding: 10px !important;
+}
+.fc-event{
+    border-radius: 10px !important;
+    color: #fff !important;
+    padding:5px !important;
+}
+.nav-item{
+    padding: 0px 10px !important;
+}
+.message__container a.dropdown-item{
+    border-bottom: 1px solid #dce3ea !important;
+    max-height: 183px;
+    contain: layout;
+    overflow-y: auto;
+}
+ .notif_count{
+    position: relative;
+    top: -9px;
+    left: -10px;
+    border-radius: 100px;
+    padding: 4px;
+    width: 15px;
+    font-size: 8px;
+    height: 15px;
+    display: none;
+}
+.navbar-brand{
+    margin-left: 35%; 
+    background: #fff; 
+    padding: 5px;
+    border-radius: 100%;
+}
+#sidebar ul.components{
+    font-size: 12px !important;
+}

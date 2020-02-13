@@ -77,6 +77,52 @@ $userId = $_SESSION['userId'];
             </div>
         </div>
         <div class="user-appointment_table">
+            <h3>Inquiries</h3>
+            <table id="table2" class="display dt-responsive nowrap table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Message ID</th>
+                        <th>Body</th>
+                        <th>Message Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $userChecker = $connect->prepare("SELECT * FROM user WHERE userId = :userId");
+                    $userChecker->execute(["userId" => $userId]);
+                    $userEmail = $userChecker->fetchAll();
+
+                    foreach ($userEmail as $userEmails) {
+                        $userEmailAdd = $userEmails['email'];
+                    }
+
+                    $userInquiries = $connect->prepare("SELECT * FROM message WHERE email = :userEmail");
+                    $userInquiries->execute(["userEmail" => $userEmailAdd]);
+                    $Inquiries = $userInquiries->fetchAll();
+
+                    foreach ($Inquiries as $inquiry) {
+                        $messageID = $inquiry['messageId'];
+                        $messageBody = base64_decode($inquiry['body']);
+                        $date = new DateTime($inquiry['createdAt']);
+                        $dateFormat = $date->format("M d Y");
+
+
+                    ?>
+                        <tr>
+                            <td><?php echo $messageID ?></td>
+                            <td><?php echo $messageBody ?></td>
+                            <td><?php echo $dateFormat ?></td>
+                            <td><i class="fas fa-eye"></i><i class="fas fa-ban"></i></td>
+
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+        <div class="user-appointment_table">
             <h3>Appointments</h3>
             <table id="table" class="display dt-responsive nowrap table table-striped table-bordered">
                 <thead>

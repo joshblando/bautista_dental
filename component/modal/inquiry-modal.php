@@ -13,15 +13,19 @@
 
             <div class="col-lg-12">
             <div class="form-group">
-              <input class="form-control" placeholder="Fullname" type="text" name="fullName" id="fullName" required="" />
+              <label>Full Name</label>
+              <input class="form-control"  type="text" name="fullName" id="fullName" required="" />
             </div>
             <div class="form-group">
-              <input class="form-control" placeholder="Email" type="email" name="email" id="email" required="" />
+              <label>Email Address</label>
+              <input class="form-control" type="email" name="email" id="email" required="" />
             </div>
             <div class="form-group">
-              <input class="form-control" placeholder="Mobile No." type="mobile" name="mobile" id="mobile" />
+              <label>Mobile Number</label>
+              <input class="form-control"  type="mobile" name="mobile" id="mobile" />
             </div>
             <div class="form-group text-area">
+              <label>Message</label>
               <textarea class="form-control" placeholder="Write a message ......." name="message" id="messages" cols="30" rows="10"></textarea>
             </div>
             </div>

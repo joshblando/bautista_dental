@@ -47,6 +47,7 @@ include 'nav.php';
                         $messageId = $message['messageId'];
                         $name = $message['name'];
                         $email = $message['email'];
+                        $mobile = $message['mobile'];
                         $body = base64_decode($message['body']);
                         $date = date('Y-m-d H:i a', strtotime($message['createdAt']));
 

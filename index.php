@@ -72,7 +72,7 @@ require_once "./config/control.php";
     <div class="row">
       <?php
 
-      $getCategories = $connect->prepare("SELECT * from service");
+      $getCategories = $connect->prepare("SELECT * from service ORDER BY id DESC LIMIT 3");
       $getCategories->execute();
       $categories = $getCategories->fetchAll();
 

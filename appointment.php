@@ -106,21 +106,27 @@ require_once "./config/control.php";
             </div>
             <div id="dropzone"></div>
             <div class="form-group">
+              <label>Service</label>
               <input class="form-control" type="text" name="service" id="inputService" readonly="readonly" />
             </div>
             <div class="form-group">
+              <label>Duration</label>
               <input class="form-control" type="text" name="duration" id="inputDuration" readonly="readonly" />
             </div>
             <div class="form-group">
+              <label>Dentist</label>
               <input class="form-control" type="text" name="employee" id="inputEmployee" readonly="readonly" />
             </div>
             <div class="form-group">
+              <label>Appointment Date</label>
               <input class="form-control" type="text" name="date" id="inputDate" readonly="readonly" />
             </div>
             <div class="form-group">
+              <label>Appointment Time</label>
               <input class="form-control" type="text" name="time" id="inputTime" readonly="readonly" />
             </div>
             <div class="form-group text-area">
+              <label>Message</label>
               <textarea class="form-control" name="message" id="message" cols="30" rows="10"></textarea>
             </div>
             </div>

@@ -27,6 +27,12 @@ require_once "./config/control.php";
 
   <title>Bautista Dental Center</title>
 </head>
+<script>
+  function load_new_content(){
+    var myval = document.getElementById("employee").value;
+    window.history.pushState({}, null, "?EmployeeID="+myval);
+} 
+</script>
 <style type="text/css">
   .app__header{
     margin-top:30%;
@@ -63,6 +69,12 @@ require_once "./config/control.php";
     font-size: 10px;
     margin: 2px;
     width: 70px;
+  }
+  #categoryName{
+    font-weight: 900;
+    font-size: 18px;
+    color: black;
+
   }
 </style>
 <body>
@@ -136,30 +148,41 @@ require_once "./config/control.php";
       <div class="col-lg-4 appointment__cont">
         <div class="container">
            <h1 class="text-center app__header">Make an Appointment </h1>
-         <div class="col-lg-12">
+           <div class="col-lg-12">
           <div class="form-group">
+            
             <select class="form-control" name="service" id="service">
-              <option disabled selected>Service</option>
+
+              <option disabled selected hidden>Service</option>
+              <!--General Dentist -->
+              
               <?php
-              $getServices = $connect->prepare("SELECT * FROM service");
+              $getServices = $connect->prepare("SELECT * FROM service ORDER BY categoryId ASC");
               $getServices->execute();
               $services = $getServices->fetchAll();
-
+              $lastcatname = "null";
               foreach ($services as $service) {
                 $serviceId = $service['serviceId'];
+                $categoryName = $service['categoryId'];
                 $name = $service['name'];
                 $duration = $service['duration'];
+                if($lastcatname != $categoryName){
+                  echo "<option id='categoryName' disabled>    ".$categoryName."</option>";
+                  $lastcatname = $categoryName;
+                }
               ?>
                 <option value="<?php echo $serviceId  . " | " . $duration ?>"><?php echo $name ?></option>
               <?php
               }
               ?>
+              
             </select>
           </div>
         </div>
-        <div class="col-lg-12">
+           <div class="col-lg-12">
           <div class="form-group">
-            <select class="form-control" name="employee" id="employee">
+
+            <select class="form-control" name="employee" id="employee" onchange="this.form.submit()">
               <option disabled selected>Dentist</option>
               <?php
               $getEmployees = $connect->prepare("SELECT * FROM employee");
@@ -175,7 +198,7 @@ require_once "./config/control.php";
               ?>
             </select>
           </div>
-        </div>
+        </div>        
         <div class="col-lg-12">
           <div class="container">
             <div class="time-container">

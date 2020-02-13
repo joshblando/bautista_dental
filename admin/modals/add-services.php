@@ -33,8 +33,14 @@
                   <label for="">Category</label>
                   <select class="form-control" name="category">
                     <option disabled selected>Category</option>
-                    <option value="MAJOR">Major</option>
-                    <option value="MINOR">Minor</option>
+                    <option value="General Dentist">General Dentist</option>
+                    <option value="Orthodontist">Orthodontist</option>
+                    <option value="Oral and Maxillofacial Surgeon">Oral and Maxillofacial Surgeon</option>
+                    <option value="Periodontist">Periodontist</option>
+                    <option value="Prosthodontist">Prosthodontist</option>
+                    <option value="Oral Pathology">Oral Pathology</option>
+                    <option value="Oral Radiology">Oral Radiology</option>
+                    <option value="Pediatric Dentistry">Pediatric Dentistry</option>
                   </select>
                 </div>
             </div>
